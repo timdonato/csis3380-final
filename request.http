@@ -1,0 +1,45 @@
+GET http://localhost:3000/api/users/66a3dcf6eec5c8d27838681e
+
+###
+
+GET http://localhost:3000/api/users/
+
+###
+
+POST http://localhost:3000/api/users/
+Content-Type: application/json
+
+{
+    "username": "user1",
+    "email": "asas@asas",
+    "password": "asas"
+}
+
+
+### 
+
+POST http://localhost:3000/api/items
+Content-Type: application/json
+
+{
+    "itemName": "item3",
+    "description": "this is item3",
+    "imageUrl": "url",
+    "startingPrice": 30,
+    "currentPrice": 35,
+    "endTime": "2024-09-26T20:41:21.846Z"
+}
+
+
+###
+
+GET http://localhost:3000/api/items/66a40aa4e81d40b62941f66a
+
+###
+
+PUT http://localhost:3000/api/items/66a40aa4e81d40b62941f66a
+Content-Type: application/json
+
+{
+    "currentPrice": 50
+}
