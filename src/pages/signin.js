@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-export default function Signin() {
+export default function Login({ user }) {
   const router = useRouter();
   const [form, setForm] = useState({ email: "", password: "" });
 
@@ -33,29 +33,91 @@ export default function Signin() {
       alert("An error occurred");
     }
   };
-
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          placeholder="Email"
-          required
+      <div className="login-section pt-120 pb-120">
+        <img
+          alt="imges"
+          src="assets/images/bg/section-bg.png"
+          className="img-fluid section-bg-top"
         />
-        <input
-          type="password"
-          name="password"
-          value={form.password}
-          onChange={handleChange}
-          placeholder="Password"
-          required
+        <img
+          alt="imges"
+          src="assets/images/bg/section-bg.png"
+          className="img-fluid section-bg-bottom"
         />
-        <button type="submit">Sign in</button>
-      </form>
-      <Link href="/signup">Sign up</Link>
+        <div className="container">
+          <div className="row d-flex justify-content-center g-4">
+            <div className="col-xl-6 col-lg-8 col-md-10">
+              <div
+                className="form-wrapper wow fadeInUp"
+                data-wow-duration="1.5s"
+                data-wow-delay=".2s"
+              >
+                <div className="form-title">
+                  <h3>Log In</h3>
+                  <p>
+                    New Member? <Link href="/signup">signup here</Link>
+                  </p>
+                </div>
+                <form className="w-100" onSubmit={handleSubmit}>
+                  <div className="row">
+                    <div className="col-12">
+                      <div className="form-inner">
+                        <label>Enter Your Email *</label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={form.email}
+                          onChange={handleChange}
+                          placeholder="Enter Your Email"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="col-12">
+                      <div className="form-inner">
+                        <label>Password *</label>
+                        <input
+                           type="password"
+                           name="password"
+                           value={form.password}
+                           onChange={handleChange}
+                           placeholder="Password"
+                           required
+                        />
+                        <i className="bi bi-eye-slash" id="togglePassword"></i>
+                      </div>
+                    </div>
+                    <div className="col-12">
+                      <div className="form-agreement form-inner d-flex justify-content-between flex-wrap">
+                        <div className="form-group">
+                          <input type="checkbox" id="html" />
+                          <label for="html">
+                            I agree to the <a href="#">Terms & Policy</a>
+                          </label>
+                        </div>
+                        <a href="#" className="forgot-pass">
+                          Forgotten Password
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" className="account-btn">Sign in</button>
+                </form>
+                <div className="form-poicy-area mt-3">
+                  <p>
+                    By clicking the "signup" button, you create a Cobiro
+                    account, and you agree to Cobiro's{" "}
+                    <a href="#">Terms & Conditions</a> &{" "}
+                    <a href="#">Privacy Policy.</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

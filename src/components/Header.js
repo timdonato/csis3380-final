@@ -1,6 +1,24 @@
 import Link from "next/link";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
-function Header() {
+// user
+import jwt from "jsonwebtoken";
+
+function Header({ user }) {
+  const router = useRouter();
+
+  const handleSignOut = () => {
+    document.cookie =
+      "authToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    router.push("/");
+  };
+
+  // useEffect(() => {
+  //   if (!user) {
+  //   }
+  // }, [user,]);
+
   return (
     <header className="header-area style-1">
       <div className="header-logo">
@@ -27,7 +45,7 @@ function Header() {
             <Link href="/about">About Us</Link>
           </li>
           <li>
-            <Link href="/live-auction">Browse Products</Link>
+            <Link href="/items">Browse Products</Link>
           </li>
           <li>
             <Link href="/auction-details">Auction Details</Link>
@@ -40,7 +58,7 @@ function Header() {
                 <Link href="/dashboard">Dashboard</Link>
               </li>
               <li>
-                <Link href="/login">Login</Link>
+                <Link href="/signin">Login</Link>
               </li>
               <li>
                 <Link href="/signup">Sign Up</Link>
@@ -85,8 +103,22 @@ function Header() {
         <div className="search-btn">
           <i className="bi bi-search"></i>
         </div>
+        {user ? (
+          <div
+            onClick={handleSignOut}
+            className="eg-btn btn--primary header-btn"
+          >
+            Sign out
+          </div>
+        ) : (
+          <div />
+        )}
         <div className="eg-btn btn--primary header-btn">
-          <Link href="/dashboard">My Account</Link>
+          {user ? (
+            <Link href="/dashboard">My Account</Link>
+          ) : (
+            <Link href="/signin">Sign in</Link>
+          )}
         </div>
         <div className="mobile-menu-btn d-lg-none d-block">
           <i className="bx bx-menu"></i>

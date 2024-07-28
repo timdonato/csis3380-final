@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import User from "./models/User";
 
 export default async function getUserFromToken(token) {
+  const { default: User } = await import("./models/User");
   try {
     if (!token) throw new Error("No token provided");
 

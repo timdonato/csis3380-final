@@ -1,8 +1,9 @@
-import footerPay1 from '../assets/images/bg/footer-pay1.png';
-import footerPay2 from '../assets/images/bg/footer-pay2.png';
-import footerPay3 from '../assets/images/bg/footer-pay3.png';
-import footerPay4 from '../assets/images/bg/footer-pay4.png';
-import footerPay5 from '../assets/images/bg/footer-pay5.png';
+import footerPay1 from '../../public/assets/images/bg/footer-pay1.png';
+import footerPay2 from '../../public/assets/images/bg/footer-pay2.png';
+import footerPay3 from '../../public/assets/images/bg/footer-pay3.png';
+import footerPay4 from '../../public/assets/images/bg/footer-pay4.png';
+import footerPay5 from '../../public/assets/images/bg/footer-pay5.png';
+
 
 function Footer() {
   return (
