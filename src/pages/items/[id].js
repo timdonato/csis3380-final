@@ -15,14 +15,21 @@ export default function AuctionDetails({ user }) {
   const [loading, setLoading] = useState(true);
   const [price, setPrice] = useState(0);
 
+  const [bidMessages, setBidMessages] = useState([]);
+  // const [messageTime, setMessageTime] = useState([]);
+
   useEffect(() => {
     if (id) {
       fetch(`/api/items/${id}`)
         .then((response) => response.json())
         .then((data) => {
-          setItem(data);
-          setPrice(data.currentPrice);
+          setItem(data.item);
+          setPrice(data.item.currentPrice);
           setLoading(false);
+          const allMessages = data.bids.flatMap((bid) => bid.message);
+          setBidMessages(allMessages);
+          // const allMessagesTime = data.bids.flatMap((bid) => bid.createdAt);
+          // setMessageTime(allMessagesTime);
         })
         .catch((error) => {
           console.error("Error fetching item:", error);
@@ -33,15 +40,26 @@ export default function AuctionDetails({ user }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token =
+      document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("authToken="))
+        ?.split("=")[1] || "";
+
     try {
       const response = await fetch(`/api/items/${id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          // Ensure you send the token with the request
+          Authorization: token ? `Bearer ${token}` : "",
+        },
         body: JSON.stringify({ currentPrice: price }),
       });
       const data = await response.json();
       if (response.ok) {
-        alert("updated the price");
+        alert(`Bid placed by ${user?.username || "Unknown User"}`);
+        window.location.href = `/items/${id}`;
       } else {
         alert(data.message || "Failed to update price");
       }
@@ -50,9 +68,9 @@ export default function AuctionDetails({ user }) {
     }
   };
 
-
   if (!user) {
     router.push("/signin");
+    return null;
   }
   if (loading) {
     return <div>Loading...</div>;
@@ -194,7 +212,6 @@ export default function AuctionDetails({ user }) {
                 <div class="bid-form">
                   <div class="form-title">
                     <h5>Bid Now</h5>
-                    <p>Bid Amount : Minimum Bid $20.00</p>
                   </div>
                   <form onSubmit={handleSubmit}>
                     <div class="form-inner gap-2">
@@ -234,35 +251,7 @@ export default function AuctionDetails({ user }) {
                     aria-controls="pills-home"
                     aria-selected="true"
                   >
-                    Description
-                  </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button
-                    class="nav-link details-tab-btn"
-                    id="pills-bid-tab"
-                    data-bs-toggle="pill"
-                    data-bs-target="#pills-bid"
-                    type="button"
-                    role="tab"
-                    aria-controls="pills-bid"
-                    aria-selected="false"
-                  >
-                    Biding History
-                  </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button
-                    class="nav-link details-tab-btn"
-                    id="pills-contact-tab"
-                    data-bs-toggle="pill"
-                    data-bs-target="#pills-contact"
-                    type="button"
-                    role="tab"
-                    aria-controls="pills-contact"
-                    aria-selected="false"
-                  >
-                    Other Auction
+                    Bidding History
                   </button>
                 </li>
               </ul>
@@ -276,44 +265,20 @@ export default function AuctionDetails({ user }) {
                   aria-labelledby="pills-home-tab"
                 >
                   <div class="describe-content">
-                    <h4>How can have anything you ant in life if you ?</h4>
-                    <p class="para">
-                      If you’ve been following the crypto space, you’ve likely
-                      heard of Non-Fungible Tokens (Biddings), more popularly
-                      referred to as ‘Crypto Collectibles.’ The world of
-                      Biddings is growing rapidly. It seems there is no slowing
-                      down of these assets as they continue to go up in price.
-                      This growth comes with the opportunity for people to start
-                      new businesses to create and capture value. The market is
-                      open for players in every kind of field. Are you a
-                      collector.
-                    </p>
-                    <p class="para">
-                      But getting your own auction site up and running has
-                      always required learning complex coding langua ges, or
-                      hiring an expensive design firm for thousands of dollars
-                      and months of work.
-                    </p>
                     <ul class="describe-list">
-                      <li>
-                        <a href="#">
-                          Amet consectetur adipisicing elit. Maxime
-                          reprehenderit quaerat, velit rem atque vel impedit!
-                          Expensive Design.
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          Consectetur adipisicing elit. Maxime reprehenderit
-                          quaerat
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          Fuga magni veritatis ad temporibus atque adipisci nisi
-                          rerum...
-                        </a>
-                      </li>
+                      {bidMessages
+                        .slice()
+                        .reverse()
+                        .map((msg, index) => (
+                          <p key={index}>{msg}</p>
+                        ))}
+                        {/* {messageTime
+                        .slice()
+                        .reverse()
+                        .map((msg, index) => (
+                          <p key={index}>{msg}</p>
+                        ))} */}
+                        
                     </ul>
                   </div>
                 </div>
@@ -594,100 +559,6 @@ export default function AuctionDetails({ user }) {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="blog-sidebar">
-                <div
-                  class="sidebar-banner wow fadeInUp"
-                  data-wow-duration="1.5s"
-                  data-wow-delay="1s"
-                >
-                  <div class="banner-content">
-                    <span>CARS</span>
-                    <h3>Toyota AIGID A Clasis Cars Sale</h3>
-                    <a
-                      href="auction-details.html"
-                      class="eg-btn btn--primary card--btn"
-                    >
-                      Details
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="about-us-counter pt-120 pb-120">
-        <div class="container">
-          <div class="row g-4 d-flex justify-content-center">
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-              <div
-                class="counter-single text-center d-flex flex-row hover-border1  wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".2s"
-              >
-                <div class="counter-icon">
-                  <img alt="image" src="/images/icons/employee.svg" />
-                </div>
-                <div class="coundown d-flex flex-column">
-                  <h3 class="odometer" data-odometer-final="5400">
-                    &nbsp;
-                  </h3>
-                  <p>Happy Customer</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-              <div
-                class="counter-single text-center d-flex flex-row hover-border1  wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".4s"
-              >
-                <div class="counter-icon">
-                  <img alt="image" src="/images/icons/review.svg" />
-                </div>
-                <div class="coundown d-flex flex-column">
-                  <h3 class="odometer" data-odometer-final="1250">
-                    &nbsp;
-                  </h3>
-                  <p>Good Reviews</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-              <div
-                class="counter-single text-center d-flex flex-row hover-border1  wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".4s"
-              >
-                <div class="counter-icon">
-                  <img alt="image" src="/images/icons/smily.svg" />
-                </div>
-                <div class="coundown d-flex flex-column">
-                  <h3 class="odometer" data-odometer-final="4250">
-                    &nbsp;
-                  </h3>
-                  <p>Winner Customer</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-              <div
-                class="counter-single text-center d-flex flex-row hover-border1  wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".8s"
-              >
-                <div class="counter-icon">
-                  <img alt="image" src="/images/icons/comment.svg" />
-                </div>
-                <div class="coundown d-flex flex-column">
-                  <h3 class="odometer" data-odometer-final="500">
-                    &nbsp;
-                  </h3>
-                  <p>New Comments</p>
                 </div>
               </div>
             </div>

@@ -94,80 +94,6 @@ export default function LiveAuction({ user }) {
           </div>
         </div>
       </div>
-      <div className="about-us-counter pb-120">
-        <div className="container">
-          <div className="row g-4 d-flex justify-content-center">
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-              <div
-                className="counter-single text-center d-flex flex-row hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".2s"
-              >
-                <div className="counter-icon">
-                  <img alt="image" src="/images/icons/employee.svg" />
-                </div>
-                <div className="coundown d-flex flex-column">
-                  <h3 className="odometer" data-odometer-final="5400">
-                    &nbsp;
-                  </h3>
-                  <p>Happy Customer</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-              <div
-                className="counter-single text-center d-flex flex-row hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".4s"
-              >
-                <div className="counter-icon">
-                  <img alt="image" src="/images/icons/review.svg" />
-                </div>
-                <div className="coundown d-flex flex-column">
-                  <h3 className="odometer" data-odometer-final="1250">
-                    &nbsp;
-                  </h3>
-                  <p>Good Reviews</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-              <div
-                className="counter-single text-center d-flex flex-row hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".4s"
-              >
-                <div className="counter-icon">
-                  <img alt="image" src="/images/icons/smily.svg" />
-                </div>
-                <div className="coundown d-flex flex-column">
-                  <h3 className="odometer" data-odometer-final="4250">
-                    &nbsp;
-                  </h3>
-                  <p>Winner Customer</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-              <div
-                className="counter-single text-center d-flex flex-row hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".8s"
-              >
-                <div className="counter-icon">
-                  <img alt="image" src="/images/icons/comment.svg" />
-                </div>
-                <div className="coundown d-flex flex-column">
-                  <h3 className="odometer" data-odometer-final="500">
-                    &nbsp;
-                  </h3>
-                  <p>New Comments</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
@@ -176,6 +102,7 @@ export default function LiveAuction({ user }) {
 import jwt from "jsonwebtoken";
 
 export async function getServerSideProps(context) {
+  const { default: User } = await import("../../../db/models/User");
   const { req } = context;
   const token = req.cookies.authToken || "";
 

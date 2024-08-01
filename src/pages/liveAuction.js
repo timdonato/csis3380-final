@@ -1,9 +1,11 @@
 import React from 'react';
 import AuctionItemBlock from '../components/Auction-Item-Block';
+import Header from "../components/Header"
 
-export default function LiveAuction() {
+export default function LiveAuction({user}) {
     return (
         <>
+        <Header user={user}/>
         <div className="inner-banner">
             <div className="container">
                 <h2 className="inner-banner-title wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">Live Auction</h2>
@@ -412,4 +414,30 @@ export default function LiveAuction() {
             </div>
         </>
     );
+}
+
+// to check signed in
+import jwt from "jsonwebtoken";
+
+export async function getServerSideProps(context) {
+  const { default: User } = await import("../../db/models/User");
+  const { req } = context;
+  const token = req.cookies.authToken || "";
+
+  try {
+    // JWT
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id).lean(); // check user on database
+    return {
+      props: {
+        user: user ? { username: user.username } : null,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        user: null,
+      },
+    };
+  }
 }

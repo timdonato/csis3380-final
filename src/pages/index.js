@@ -439,56 +439,6 @@ export default function Home({ user }) {
         </div>
       </div>
     </div>
-    <div className="about-us-counter pb-120">
-            <div className="container">
-                <div className="row g-4 d-flex justify-content-center">
-                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-                    <div className="counter-single text-center d-flex flex-row hover-border1 wow fadeInDown" data-wow-duration="1.5s" data-wow-delay="0.3s">
-                    <div className="counter-icon">
-                        <img src="/images/icons/employee.svg" alt="employee" />
-                    </div>
-                    <div className="coundown d-flex flex-column">
-                        <h3 className="odometer" data-odometer-final="400">&nbsp;</h3>
-                        <p>Happy Customer</p>
-                    </div>
-                    </div>
-                </div>
-                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-                    <div className="counter-single text-center d-flex flex-row hover-border1 wow fadeInDown" data-wow-duration="1.5s" data-wow-delay="0.6s">
-                    <div className="counter-icon">
-                        <img src="/images/icons/review.svg" alt="review" />
-                    </div>
-                    <div className="coundown d-flex flex-column">
-                        <h3 className="odometer" data-odometer-final="250">&nbsp;</h3>
-                        <p>Good Reviews</p>
-                    </div>
-                    </div>
-                </div>
-                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-                    <div className="counter-single text-center d-flex flex-row hover-border1 wow fadeInDown" data-wow-duration="1.5s" data-wow-delay="0.9s">
-                    <div className="counter-icon">
-                        <img src="/images/icons/smily.svg" alt="smily" />
-                    </div>
-                    <div className="coundown d-flex flex-column">
-                        <h3 className="odometer" data-odometer-final="350">&nbsp;</h3>
-                        <p>Winner Customer</p>
-                    </div>
-                    </div>
-                </div>
-                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-                    <div className="counter-single text-center d-flex flex-row hover-border1 wow fadeInDown" data-wow-duration="1.5s" data-wow-delay=".8s">
-                    <div className="counter-icon">
-                        <img src="/images/icons/comment.svg" alt="comment" />
-                    </div>
-                    <div className="coundown d-flex flex-column">
-                        <h3 className="odometer" data-odometer-final="500">&nbsp;</h3>
-                        <p>New Comments</p>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
     </>
       
     </>

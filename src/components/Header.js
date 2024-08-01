@@ -23,14 +23,14 @@ function Header({ user }) {
     <header className="header-area style-1">
       <div className="header-logo">
         <Link href="/">
-          <img alt="image" src="/images/bg/header-logo.png" />
+          <img alt="image" src="../assets/images/bg/header-logo.png" />
         </Link>
       </div>
       <div className="main-menu">
         <div className="mobile-logo-area d-lg-none d-flex justify-content-between align-items-center">
           <div className="mobile-logo-wrap">
             <Link href="/">
-              <img alt="image" src="/images/bg/header-logo.png" />
+              <img alt="image" src="../assets/images/bg/header-logo.png" />
             </Link>
           </div>
           <div className="menu-close-btn">
@@ -48,9 +48,9 @@ function Header({ user }) {
             <Link href="/items">Browse Products</Link>
           </li>
           <li>
-            <Link href="/auction-details">Auction Details</Link>
+            <Link href="/items/add">Register Item</Link>
           </li>
-          <li className="menu-item-has-children">
+          {/* <li className="menu-item-has-children">
             <Link href="#">Account</Link>
             <i className="bx bx-plus dropdown-icon"></i>
             <ul className="submenu">
@@ -64,7 +64,7 @@ function Header({ user }) {
                 <Link href="/signup">Sign Up</Link>
               </li>
             </ul>
-          </li>
+          </li> */}
           <li>
             <Link href="/contact">Contact</Link>
           </li>
@@ -91,7 +91,7 @@ function Header({ user }) {
       <div className="nav-right d-flex align-items-center">
         <div className="hotline d-xxl-flex d-none">
           <div className="hotline-icon">
-            <img alt="image" src="/images/icons/header-phone.svg" />
+            <img alt="image" src="../assets/images/icons/header-phone.svg" />
           </div>
           <div className="hotline-info">
             <span>Click To Call</span>
