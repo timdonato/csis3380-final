@@ -35,7 +35,7 @@ export default function Home({ user }) {
                   <div className="row d-flex justify-content-center align-items-center">
                     <div className="col-xl-10 col-lg-10">
                       <div className="banner1-content">
-                        <span>Welcome To Auction House</span>
+                        <span>Welcome To Auction Hive</span>
                         <h1>Build, sell & collect digital items.</h1>
                         <p>Nulla facilisi. Maecenas ac tellus ut ligula interdum convallis. Nullam dapibus on erat in dolor posuere, none hendrerit lectus ornare. Suspendisse sit amet turpina sagittis, ultrices dui et, aliquam none hendrerit lectus. </p>
                         <a href="/items" className="eg-btn btn--primary btn--lg">Start Exploring</a>
@@ -50,10 +50,10 @@ export default function Home({ user }) {
       </div>
     </div>
     <div className="live-auction pb-120 pt-120">
-      <img alt="image" src="/images/bg/section-bg.png" className="img-fluid section-bg" />
+      <img alt="image" src="../assets/images/bg/section-bg.png" className="img-fluid section-bg" />
       <div className="container position-relative">
-        <img alt="image" src="/images/bg/dotted1.png" className="dotted1" />
-        <img alt="image" src="/images/bg/dotted1.png" className="dotted2" /> 
+        <img alt="image" src="../assets/images/bg/dotted1.png" className="dotted1" />
+        <img alt="image" src="../assets/images/bg/dotted1.png" className="dotted2" /> 
         <div className="row d-flex justify-content-center">
           <div className="col-sm-12 col-md-10 col-lg-8 col-xl-6">
             <div className="section-title1">
@@ -64,9 +64,9 @@ export default function Home({ user }) {
         </div>
         <div className="row gy-4 mb-60 d-flex justify-content-center">
           <div className="col-lg-4 col-md-6 col-sm-10 ">
-            <div data-wow-duration="1.5s" data-wow-delay="0.2s" className="eg-card auction-card1 wow animate fadeInDown">
+            <div  data-wow-delay="0.2s" className="eg-card auction-card1">
               <div className="auction-img">
-                <img alt="image" src="/images/bg/live-auc1.png" />
+                <img alt="image" src="../assets/images/bg/live-auc1.png" />
                 <div className="auction-timer">
                   <div className="countdown" id="timer1">
                     <h4>
@@ -74,14 +74,7 @@ export default function Home({ user }) {
                     </h4>
                   </div>
                 </div>
-                <div className="author-area">
-                  <div className="author-emo">
-                    <img alt="image" src="/images/icons/smile-emo.svg" />
-                  </div>
-                  <div className="author-name">
-                    <span>by @robatfox</span>
-                  </div>
-                </div>
+                
               </div>
               <div className="auction-content">
                 <h4>
@@ -93,43 +86,15 @@ export default function Home({ user }) {
                 </p>
                 <div className="auction-card-bttm">
                   <a href="/auction-details" className="eg-btn btn--primary btn--sm">Place a Bid</a>
-                  <div className="share-area">
-                    <ul className="social-icons d-flex">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="bx bxl-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com/">
-                          <i className="bx bxl-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.pinterest.com/">
-                          <i className="bx bxl-pinterest"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="bx bxl-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <div>
-                      <div className="share-btn">
-                        <i className="bx bxs-share-alt"></i>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
           </div>
           <div className="col-lg-4 col-md-6 col-sm-10 ">
-            <div data-wow-duration="1.5s" data-wow-delay="0.4s" className="eg-card auction-card1 wow animate fadeInDown">
+            <div  data-wow-delay="0.4s" className="eg-card auction-card1">
               <div className="auction-img">
-                <img alt="image" src="/images/bg/live-auc2.png" />
+                <img alt="image" src="../assets/images/bg/live-auc2.png" />
                 <div className="auction-timer">
                   <div className="countdown" id="timer2">
                     <h4>
@@ -137,14 +102,7 @@ export default function Home({ user }) {
                     </h4>
                   </div>
                 </div>
-                <div className="author-area">
-                  <div className="author-emo">
-                    <img alt="image" src="/images/icons/smile-emo.svg" />
-                  </div>
-                  <div className="author-name">
-                    <span>by @robatfox</span>
-                  </div>
-                </div>
+                
               </div>
               <div className="auction-content">
                 <h4>
@@ -154,56 +112,20 @@ export default function Home({ user }) {
                 </p>
                 <div className="auction-card-bttm">
                   <a href="/auction-details" className="eg-btn btn--primary btn--sm">Place a Bid</a>
-                  <div className="share-area">
-                    <ul className="social-icons d-flex">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="bx bxl-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com/">
-                          <i className="bx bxl-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.pinterest.com/">
-                          <i className="bx bxl-pinterest"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="bx bxl-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <div>
-                      <div className="share-btn">
-                        <i className="bx bxs-share-alt"></i>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
           </div>
           <div className="col-lg-4 col-md-6 col-sm-10 ">
-            <div data-wow-duration="1.5s" data-wow-delay="0.6s" className="eg-card auction-card1 wow animate fadeInDown">
+            <div className="eg-card auction-card1">
               <div className="auction-img">
-                <img alt="image" src="/images/bg/live-auc3.png" />
+                <img alt="image" src="../assets/images/bg/live-auc3.png" />
                 <div className="auction-timer">
                   <div className="countdown" id="timer3">
                     <h4>
                       <span id="hours3">05</span>H : <span id="minutes3">52</span>M : <span id="seconds3">32</span>S
                     </h4>
-                  </div>
-                </div>
-                <div className="author-area">
-                  <div className="author-emo">
-                    <img alt="image" src="/images/icons/smile-emo.svg" />
-                  </div>
-                  <div className="author-name">
-                    <span>by @robatfox</span>
                   </div>
                 </div>
               </div>
@@ -215,43 +137,15 @@ export default function Home({ user }) {
                 </p>
                 <div className="auction-card-bttm">
                   <a href="/auction-details" className="eg-btn btn--primary btn--sm">Place a Bid</a>
-                  <div className="share-area">
-                    <ul className="social-icons d-flex">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="bx bxl-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com/">
-                          <i className="bx bxl-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.pinterest.com/">
-                          <i className="bx bxl-pinterest"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="bx bxl-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <div>
-                      <div className="share-btn">
-                        <i className="bx bxs-share-alt"></i>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
           </div>
           <div className="col-lg-4 col-md-6 col-sm-10 ">
-            <div data-wow-duration="1.5s" data-wow-delay=".2s" className="eg-card auction-card1 wow animate fadeInDown">
+            <div  data-wow-delay=".2s" className="eg-card auction-card1">
               <div className="auction-img">
-                <img alt="image" src="/images/bg/live-auc4.png" />
+                <img alt="image" src="../assets/images/bg/live-auc4.png" />
                 <div className="auction-timer">
                   <div className="countdown" id="timer4">
                     <h4>
@@ -259,14 +153,7 @@ export default function Home({ user }) {
                     </h4>
                   </div>
                 </div>
-                <div className="author-area">
-                  <div className="author-emo">
-                    <img alt="image" src="/images/icons/smile-emo.svg" />
-                  </div>
-                  <div className="author-name">
-                    <span>by @robatfox</span>
-                  </div>
-                </div>
+                
               </div>
               <div className="auction-content">
                 <h4>
@@ -276,43 +163,15 @@ export default function Home({ user }) {
                 </p>
                 <div className="auction-card-bttm">
                   <a href="/auction-details" className="eg-btn btn--primary btn--sm">Place a Bid</a>
-                  <div className="share-area">
-                    <ul className="social-icons d-flex">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="bx bxl-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com/">
-                          <i className="bx bxl-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.pinterest.com/">
-                          <i className="bx bxl-pinterest"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="bx bxl-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <div>
-                      <div className="share-btn">
-                        <i className="bx bxs-share-alt"></i>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
           </div>
           <div className="col-lg-4 col-md-6 col-sm-10 ">
-            <div data-wow-duration="1.5s" data-wow-delay=".4s" className="eg-card auction-card1 wow animate fadeInDown">
+            <div  data-wow-delay=".4s" className="eg-card auction-card1">
               <div className="auction-img">
-                <img alt="image" src="/images/bg/live-auc5.png" />
+                <img alt="image" src="../assets/images/bg/live-auc5.png" />
                 <div className="auction-timer">
                   <div className="countdown" id="timer5">
                     <h4>
@@ -320,14 +179,7 @@ export default function Home({ user }) {
                     </h4>
                   </div>
                 </div>
-                <div className="author-area">
-                  <div className="author-emo">
-                    <img alt="image" src="/images/icons/smile-emo.svg" />
-                  </div>
-                  <div className="author-name">
-                    <span>by @robatfox</span>
-                  </div>
-                </div>
+               
               </div>
               <div className="auction-content">
                 <h4>
@@ -337,43 +189,15 @@ export default function Home({ user }) {
                 </p>
                 <div className="auction-card-bttm">
                   <a href="/auction-details" className="eg-btn btn--primary btn--sm">Place a Bid</a>
-                  <div className="share-area">
-                    <ul className="social-icons d-flex">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="bx bxl-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com/">
-                          <i className="bx bxl-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.pinterest.com/">
-                          <i className="bx bxl-pinterest"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="bx bxl-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <div>
-                      <div className="share-btn">
-                        <i className="bx bxs-share-alt"></i>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
           </div>
           <div className="col-lg-4 col-md-6 col-sm-10 ">
-            <div data-wow-duration="1.5s" data-wow-delay=".4s" className="eg-card auction-card1 wow animate fadeInDown">
+            <div  data-wow-delay=".4s" className="eg-card auction-card1">
               <div className="auction-img">
-                <img alt="image" src="/images/bg/live-auc6.png" />
+                <img alt="image" src="../assets/images/bg/live-auc6.png" />
                 <div className="auction-timer">
                   <div className="countdown" id="timer6">
                     <h4>
@@ -381,14 +205,7 @@ export default function Home({ user }) {
                     </h4>
                   </div>
                 </div>
-                <div className="author-area">
-                  <div className="author-emo">
-                    <img alt="image" src="/images/icons/smile-emo.svg" />
-                  </div>
-                  <div className="author-name">
-                    <span>by @robatfox</span>
-                  </div>
-                </div>
+               
               </div>
               <div className="auction-content">
                 <h4>
@@ -398,35 +215,7 @@ export default function Home({ user }) {
                 </p>
                 <div className="auction-card-bttm">
                   <a href="/auction-details" className="eg-btn btn--primary btn--sm">Place a Bid</a>
-                  <div className="share-area">
-                    <ul className="social-icons d-flex">
-                      <li>
-                        <a href="https://www.facebook.com/">
-                          <i className="bx bxl-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.twitter.com/">
-                          <i className="bx bxl-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.pinterest.com/">
-                          <i className="bx bxl-pinterest"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.instagram.com/">
-                          <i className="bx bxl-instagram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <div>
-                      <div className="share-btn">
-                        <i className="bx bxs-share-alt"></i>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>

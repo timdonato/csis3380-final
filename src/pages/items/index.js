@@ -19,9 +19,7 @@ export default function LiveAuction({ user }) {
       <div className="inner-banner">
         <div className="container">
           <h2
-            className="inner-banner-title wow fadeInLeft"
-            data-wow-duration="1.5s"
-            data-wow-delay=".2s"
+            className="inner-banner-title"
           >
             Live Auction
           </h2>
@@ -40,12 +38,12 @@ export default function LiveAuction({ user }) {
       <div className="live-auction-section pt-120 pb-120">
         <img
           alt="image"
-          src="/images/bg/section-bg.png"
+          src="../assets/images/bg/section-bg.png"
           className="img-fluid section-bg-top"
         />
         <img
           alt="image"
-          src="/images/bg/section-bg.png"
+          src="../assets/images/bg/section-bg.png"
           className="img-fluid section-bg-bottom"
         />
         <div className="container">

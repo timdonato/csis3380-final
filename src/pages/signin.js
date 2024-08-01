@@ -37,23 +37,19 @@ export default function Login({ user }) {
     <>
       <div className="login-section pt-120 pb-120">
         <img
-          alt="imges"
+          alt="images"
           src="assets/images/bg/section-bg.png"
           className="img-fluid section-bg-top"
         />
         <img
-          alt="imges"
+          alt="images"
           src="assets/images/bg/section-bg.png"
           className="img-fluid section-bg-bottom"
         />
         <div className="container">
           <div className="row d-flex justify-content-center g-4">
             <div className="col-xl-6 col-lg-8 col-md-10">
-              <div
-                className="form-wrapper wow fadeInUp"
-                data-wow-duration="1.5s"
-                data-wow-delay=".2s"
-              >
+              <div className="form-wrapper">
                 <div className="form-title">
                   <h3>Log In</h3>
                   <p>
@@ -86,7 +82,6 @@ export default function Login({ user }) {
                            placeholder="Password"
                            required
                         />
-                        <i className="bi bi-eye-slash" id="togglePassword"></i>
                       </div>
                     </div>
                     <div className="col-12">
@@ -105,10 +100,10 @@ export default function Login({ user }) {
                   </div>
                   <button type="submit" className="account-btn">Sign in</button>
                 </form>
-                <div className="form-poicy-area mt-3">
+                <div className="form-policy-area mt-3">
                   <p>
-                    By clicking the "signup" button, you create a Cobiro
-                    account, and you agree to Cobiro's{" "}
+                    By clicking the "signup" button, you create a AuctionHive
+                    account, and you agree to AuctionHive's{" "}
                     <a href="#">Terms & Conditions</a> &{" "}
                     <a href="#">Privacy Policy.</a>
                   </p>

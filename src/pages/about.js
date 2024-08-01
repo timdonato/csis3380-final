@@ -29,7 +29,7 @@ export default function About({ user }) {
       </div>
       <div className="about-section pt-120 pb-120">
         <img
-          src="/images/bg/section-bg.png"
+          src="../assets/images/bg/section-bg.png"
           className="img-fluid section-bg-top"
           alt="section-bg"
         />
@@ -38,24 +38,24 @@ export default function About({ user }) {
             <div className="col-lg-6 col-md-10">
               <div className="about-img-area">
                 <div className="total-tag">
-                  <img src="/images/bg/total-tag.png" alt />
+                  <img src="../assets/images/bg/total-tag.png" alt />
                   <h6>Total Raised</h6>
                   <h5>$45,390.00</h5>
                 </div>
                 <img
-                  src="/images/bg/about-img.png"
+                  src="../assets/images/bg/about-img.png"
                   className="img-fluid about-img wow fadeInUp"
                   data-wow-duration="1.5s"
                   data-wow-delay=".2s"
                   alt="about-img"
                 />
                 <img
-                  src="/images/bg/about-linear.png"
+                  src="../assets/images/bg/about-linear.png"
                   className="img-fluid about-linear"
                   alt
                 />
                 <img
-                  src="/images/bg/about-linear.png"
+                  src="../assets/images/bg/about-linear.png"
                   className="img-fluid about-vector"
                   alt
                 />
@@ -103,13 +103,13 @@ export default function About({ user }) {
       </div>
       <div className="choose-us-section pb-120" id="choose-us">
         <img
-          src="/images/bg/section-bg.png"
+          src="../assets/images/bg/section-bg.png"
           className="section-bg-bottom"
           alt
         />
         <div className="container position-relative">
           <img
-            src="/images/bg/angle-vector.png"
+            src="../assets/images/bg/angle-vector.png"
             className="img-fluid angle-vector"
             alt
           />
@@ -337,80 +337,6 @@ export default function About({ user }) {
         </div>
       </div>
 
-      <div className="about-us-counter  pb-120">
-        <div className="container">
-          <div className="row g-4 d-flex justify-content-center">
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-              <div
-                className="counter-single text-center d-flex flex-row hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay="0.3s"
-              >
-                <div className="counter-icon">
-                  <img src="/images/icons/employee.svg" alt="employee" />
-                </div>
-                <div className="coundown d-flex flex-column">
-                  <h3 className="odometer" data-odometer-final="400">
-                    &nbsp;
-                  </h3>
-                  <p>Happy Customer</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-              <div
-                className="counter-single text-center d-flex flex-row hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay="0.6s"
-              >
-                <div className="counter-icon">
-                  <img src="/images/icons/review.svg" alt="review" />
-                </div>
-                <div className="coundown d-flex flex-column">
-                  <h3 className="odometer" data-odometer-final="250">
-                    &nbsp;
-                  </h3>
-                  <p>Good Reviews</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-              <div
-                className="counter-single text-center d-flex flex-row hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay="0.9s"
-              >
-                <div className="counter-icon">
-                  <img src="/images/icons/smily.svg" alt="smily" />
-                </div>
-                <div className="coundown d-flex flex-column">
-                  <h3 className="odometer" data-odometer-final="350">
-                    &nbsp;
-                  </h3>
-                  <p>Winner Customer</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-10 col-10">
-              <div
-                className="counter-single text-center d-flex flex-row hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".8s"
-              >
-                <div className="counter-icon">
-                  <img src="/images/icons/comment.svg" alt="comment" />
-                </div>
-                <div className="coundown d-flex flex-column">
-                  <h3 className="odometer" data-odometer-final="500">
-                    &nbsp;
-                  </h3>
-                  <p>New Comments</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
