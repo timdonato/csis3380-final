@@ -56,7 +56,7 @@ export default function LiveAuction({ user }) {
           <div className="row gy-4 mb-60 d-flex justify-content-center">
             {currentItems.map((item) => (
               <div key={item._id} className="col-lg-4 col-md-6 col-sm-10">
-                <LinkuctionItemBlock
+                <AuctionItemBlock
                   id={item._id}
                   imageUrl={item.imageUrl}
                   description={item.description}
