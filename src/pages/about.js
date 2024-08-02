@@ -294,12 +294,9 @@ export async function getServerSideProps(context) {
   const { req } = context;
   const token = req.cookies.authToken || "";
 
-
-
   try {
     // JWT
-    // const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const decoded = jwt.verify(token, "CSIS3380Project");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.id).lean(); // check user on database
     return {
       props: {

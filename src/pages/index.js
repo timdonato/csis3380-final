@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "../components/Header";
+import Image from 'next/image';
 
 export default function Home({ user }) {
   const [items, setItems] = useState([]);
@@ -117,7 +118,7 @@ export async function getServerSideProps(context) {
 
   try {
     // JWT
-    const decoded = jwt.verify(token, "CSIS3380Project");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.id).lean(); // check user on database
     return {
       props: {

@@ -12,8 +12,7 @@ require('dotenv').config();
 
 // export default connectDb;
 
-// const MONGODB_URI = process.env.MONGODB_URI;
-const MONGODB_URI = "mongodb+srv://tongsik98:YFRPPjKG2KnhrHB3@cluster0.hozhwda.mongodb.net/myDatabase?retryWrites=true&w=majority";
+const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
   throw new Error(
