@@ -4,13 +4,18 @@ import Link from "next/link";
 
 export default function Login({ user }) {
   const router = useRouter();
+
+
+  // form handling
   const [form, setForm] = useState({ email: "", password: "" });
 
+  // onChange
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  // submit sign in req
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -33,6 +38,9 @@ export default function Login({ user }) {
       alert("An error occurred");
     }
   };
+  // --------------------------------------------------------------------------------
+
+  // render
   return (
     <>
       <div className="login-section pt-120 pb-120">

@@ -14,10 +14,9 @@ export default function AuctionDetails({ user }) {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [price, setPrice] = useState(0);
-
   const [bidMessages, setBidMessages] = useState([]);
-  // const [messageTime, setMessageTime] = useState([]);
 
+  // get data from db and set values
   useEffect(() => {
     if (id) {
       fetch(`/api/items/${id}`)
@@ -28,8 +27,6 @@ export default function AuctionDetails({ user }) {
           setLoading(false);
           const allMessages = data.bids.flatMap((bid) => bid.message);
           setBidMessages(allMessages);
-          // const allMessagesTime = data.bids.flatMap((bid) => bid.createdAt);
-          // setMessageTime(allMessagesTime);
         })
         .catch((error) => {
           console.error("Error fetching item:", error);
@@ -38,6 +35,7 @@ export default function AuctionDetails({ user }) {
     }
   }, [id]);
 
+  // update current price, check username and add bid message to bid db
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token =
@@ -67,7 +65,34 @@ export default function AuctionDetails({ user }) {
       alert("An error occurred");
     }
   };
+  // -------------------------------------------------
 
+  // handle delete
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`/api/items/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("delete successfully");
+        router.push("/items");
+      } else {
+        alert(data.message || "Failed to delete price");
+      }
+    } catch (error) {
+      alert("An error occurred");
+    }
+  };
+  // ------------------------------------------------
+
+  // check signed in
   if (!user) {
     router.push("/signin");
     return null;
@@ -80,6 +105,7 @@ export default function AuctionDetails({ user }) {
     return <div>Item not found</div>;
   }
 
+  // render
   return (
     <>
       <Header user={user} />
@@ -272,294 +298,21 @@ export default function AuctionDetails({ user }) {
                         .map((msg, index) => (
                           <p key={index}>{msg}</p>
                         ))}
-                        {/* {messageTime
-                        .slice()
-                        .reverse()
-                        .map((msg, index) => (
-                          <p key={index}>{msg}</p>
-                        ))} */}
-                        
                     </ul>
                   </div>
                 </div>
-                <div
-                  class="tab-pane fade"
-                  id="pills-bid"
-                  role="tabpanel"
-                  aria-labelledby="pills-bid-tab"
-                >
-                  <div class="bid-list-area">
-                    <ul class="bid-list">
-                      <li>
-                        <div class="row d-flex align-items-center">
-                          <div class="col-7">
-                            <div class="bidder-area">
-                              <div class="bidder-img">
-                                <img alt="image" src="/images/bg/bidder1.png" />
-                              </div>
-                              <div class="bidder-content">
-                                <a href="#">
-                                  <h6>Robart FOX</h6>
-                                </a>
-                                <p>24.50 ETH</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-5 text-end">
-                            <div class="bid-time">
-                              <p>4 Hours Ago</p>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="row d-flex align-items-center">
-                          <div class="col-7">
-                            <div class="bidder-area">
-                              <div class="bidder-img">
-                                <img alt="image" src="/images/bg/bidder2.png" />
-                              </div>
-                              <div class="bidder-content">
-                                <a href="#">
-                                  <h6>Jane Cooper</h6>
-                                </a>
-                                <p>224.5 ETH</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-5 text-end">
-                            <div class="bid-time">
-                              <p>5 Hours Ago</p>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="row d-flex align-items-center">
-                          <div class="col-7">
-                            <div class="bidder-area">
-                              <div class="bidder-img">
-                                <img alt="image" src="/images/bg/bidder3.png" />
-                              </div>
-                              <div class="bidder-content">
-                                <a href="#">
-                                  <h6>Guy Hawkins</h6>
-                                </a>
-                                <p>34.5 ETH</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-5 text-end">
-                            <div class="bid-time">
-                              <p>6 Hours 45 minutes Ago</p>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="row d-flex align-items-center">
-                          <div class="col-7">
-                            <div class="bidder-area">
-                              <div class="bidder-img">
-                                <img alt="image" src="/images/bg/bidder1.png" />
-                              </div>
-                              <div class="bidder-content">
-                                <a href="#">
-                                  <h6>Robart FOX</h6>
-                                </a>
-                                <p>24.50 ETH</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-5 text-end">
-                            <div class="bid-time">
-                              <p>4 Hours Ago</p>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="row d-flex align-items-center">
-                          <div class="col-7">
-                            <div class="bidder-area">
-                              <div class="bidder-img">
-                                <img alt="image" src="/images/bg/bidder2.png" />
-                              </div>
-                              <div class="bidder-content">
-                                <a href="#">
-                                  <h6>Robart FOX</h6>
-                                </a>
-                                <p>24.50 ETH</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-5 text-end">
-                            <div class="bid-time">
-                              <p>4 Hours Ago</p>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div
-                  class="tab-pane fade"
-                  id="pills-contact"
-                  role="tabpanel"
-                  aria-labelledby="pills-contact-tab"
-                >
-                  <div class="row d-flex justify-content-center g-4">
-                    <div class="col-lg-6 col-md-4 col-sm-10">
-                      <div class="eg-card auction-card1">
-                        <div class="auction-img">
-                          <img alt="image" src="/images/bg/live-auc1.png" />
-                          <div class="auction-timer">
-                            <div class="countdown" id="timer1">
-                              <h4>
-                                <span id="hours1">05</span>H :{" "}
-                                <span id="minutes1">52</span>M :{" "}
-                                <span id="seconds1">32</span>S
-                              </h4>
-                            </div>
-                          </div>
-                          <div class="author-area">
-                            <div class="author-emo">
-                              <img
-                                alt="image"
-                                src="/images/icons/smile-emo.svg"
-                              />
-                            </div>
-                            <div class="author-name">
-                              <span>by @robatfox</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="auction-content">
-                          <h4>
-                            <a href="auction-details.html">
-                              Brand New royal Enfield 250 CC For Sale
-                            </a>
-                          </h4>
-                          <p>
-                            Bidding Price : <span>$85.9</span>
-                          </p>
-                          <div class="auction-card-bttm">
-                            <a
-                              href="auction-details.html"
-                              class="eg-btn btn--primary btn--sm"
-                            >
-                              Place a Bid
-                            </a>
-                            <div class="share-area">
-                              <ul class="social-icons d-flex">
-                                <li>
-                                  <a href="https://www.facebook.com/">
-                                    <i class="bx bxl-facebook"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="https://www.twitter.com/">
-                                    <i class="bx bxl-twitter"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="https://www.pinterest.com/">
-                                    <i class="bx bxl-pinterest"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="https://www.instagram.com/">
-                                    <i class="bx bxl-instagram"></i>
-                                  </a>
-                                </li>
-                              </ul>
-                              <div>
-                                <a href="#" class="share-btn">
-                                  <i class="bx bxs-share-alt"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 col-md-4 col-sm-10">
-                      <div class="eg-card auction-card1 wow fadeInDown">
-                        <div class="auction-img">
-                          <img alt="image" src="/images/bg/live-auc2.png" />
-                          <div class="auction-timer">
-                            <div class="countdown" id="timer2">
-                              <h4>
-                                <span id="hours2">05</span>H :{" "}
-                                <span id="minutes2">52</span>M :{" "}
-                                <span id="seconds2">32</span>S
-                              </h4>
-                            </div>
-                          </div>
-                          <div class="author-area">
-                            <div class="author-emo">
-                              <img
-                                alt="image"
-                                src="/images/icons/smile-emo.svg"
-                              />
-                            </div>
-                            <div class="author-name">
-                              <span>by @robatfox</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="auction-content">
-                          <h4>
-                            <a href="auction-details.html">
-                              Wedding Special Exclusive Cupple Ring (S2022)
-                            </a>
-                          </h4>
-                          <p>
-                            Bidding Price : <span>$85.9</span>
-                          </p>
-                          <div class="auction-card-bttm">
-                            <a
-                              href="auction-details.html"
-                              class="eg-btn btn--primary btn--sm"
-                            >
-                              Place a Bid
-                            </a>
-                            <div class="share-area">
-                              <ul class="social-icons d-flex">
-                                <li>
-                                  <a href="https://www.facebook.com/">
-                                    <i class="bx bxl-facebook"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="https://www.twitter.com/">
-                                    <i class="bx bxl-twitter"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="https://www.pinterest.com/">
-                                    <i class="bx bxl-pinterest"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="https://www.instagram.com/">
-                                    <i class="bx bxl-instagram"></i>
-                                  </a>
-                                </li>
-                              </ul>
-                              <div>
-                                <a href="#" class="share-btn">
-                                  <i class="bx bxs-share-alt"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {user.username == "superuser" ? (
+                  <>
+                    <Link href={`/items/edit/${id}`}>
+                      <input type="button" value="Edit" />
+                    </Link>
+                    <form onSubmit={handleDelete}>
+                      <input type="submit" value="delete" />
+                    </form>
+                  </>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
@@ -583,7 +336,9 @@ export async function getServerSideProps(context) {
 
     return {
       props: {
-        user: user ? { username: user.username } : null,
+        user: user
+          ? { id: user._id.toString(), username: user.username }
+          : null,
       },
     };
   } catch (error) {

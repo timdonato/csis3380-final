@@ -1,29 +1,27 @@
 import Link from "next/link";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
-
-// user
-import jwt from "jsonwebtoken";
 
 function Header({ user }) {
   const router = useRouter();
 
+  // handle sign out
   const handleSignOut = () => {
     document.cookie =
       "authToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     router.push("/");
   };
 
-  // useEffect(() => {
-  //   if (!user) {
-  //   }
-  // }, [user,]);
-
+  // render
   return (
-    <header className="header-area style-1">
+    <header className="header-area">
       <div className="header-logo">
         <Link href="/">
-          <img alt="image" src="../assets/images/bg/header-logo.png" />
+          <img
+            src="../assets/images/logo.png"
+            alt="Auction Hive"
+            height="40"
+            width="40"
+          />
         </Link>
       </div>
       <div className="main-menu">
@@ -48,7 +46,12 @@ function Header({ user }) {
             <Link href="/items">Browse Products</Link>
           </li>
           <li>
-            <Link href="/items/add">Register Item</Link>
+            <Link href="/contact">Contact</Link>
+          </li>
+          <li>
+            {user && user.username === "superuser" ? (
+  <Link href="/items/add">Register Item</Link>
+) : null}
           </li>
           {/* <li className="menu-item-has-children">
             <Link href="#">Account</Link>
@@ -65,9 +68,7 @@ function Header({ user }) {
               </li>
             </ul>
           </li> */}
-          <li>
-            <Link href="/contact">Contact</Link>
-          </li>
+          
         </ul>
         <div className="d-lg-none d-block">
           <form className="mobile-menu-form mb-5">
@@ -113,9 +114,9 @@ function Header({ user }) {
         ) : (
           <div />
         )}
-        <div className="eg-btn btn--primary header-btn">
+        &nbsp;&nbsp;<div className="eg-btn btn--primary header-btn">
           {user ? (
-            <Link href="/dashboard">My Account</Link>
+            <Link href={`/dashboard/${user.id}`}>My Account</Link>
           ) : (
             <Link href="/signin">Sign in</Link>
           )}

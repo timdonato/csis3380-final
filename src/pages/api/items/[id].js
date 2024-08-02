@@ -89,6 +89,18 @@ export default async function handler(req, res) {
         res.status(200).json({ item, bids });
         break;
 
+      case "DELETE":
+        const deleteItem = await Item.findByIdAndDelete(id);
+        const deleteBid = await Bid.deleteMany({ item: id }).lean();
+
+        if (!deleteItem || !deleteBid) {
+          // If no document was found, return a 404 Not Found response
+          return res.status(404).json({ message: 'Item or Bid not found' });
+        }
+        res.status(200).json({ message: 'Item successfully deleted' });
+
+        break;
+
       default:
         res.status(405).send({ error: "Method not allowed" });
         break;

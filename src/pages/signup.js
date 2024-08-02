@@ -2,25 +2,26 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 
 export default function Signup() {
+  
+  const router = useRouter();
+
+  // form handling
   const [form, setForm] = useState({
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
-  const router = useRouter();
 
+  // onChange
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  // submit signup req
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (form.password !== form.confirmPassword){
-    //     alert("password doesn't match");
-    //     return;
-    //   }
     try {
       const response = await fetch("/api/auth/signup", {
         method: "POST",
@@ -36,6 +37,9 @@ export default function Signup() {
       alert("An error occurred");
     }
   };
+  // --------------------------------------------------------------------------------
+
+  // render
   return (
     <div className="signup-section pt-120 pb-120">
       <img

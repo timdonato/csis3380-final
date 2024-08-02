@@ -1,28 +1,33 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Header from "../../../components/Header";
 
-import Header from "../../components/Header";
-
-export default function LiveAuction({ user }) {
+export default function LiveAuction({ user, initialItem }) {
   const router = useRouter();
+  const { id } = router.query;
 
-  // form handling
   const [form, setForm] = useState({
     itemName: "",
     description: "",
-    imageUrl: "",
+    imageUrl: "url",
     startingPrice: "",
     currentPrice: "",
     endTime: "",
   });
 
-  // set initial currentPrice to startingPrice automatically
+  // set initial value from db
   useEffect(() => {
-    setForm((prevForm) => ({
-      ...prevForm,
-      currentPrice: prevForm.startingPrice,
-    }));
-  }, [form.startingPrice]);
+    if (initialItem) {
+      setForm({
+        itemName: initialItem.name || "",
+        description: initialItem.description || "",
+        imageUrl: initialItem.imageUrl || "",
+        startingPrice: initialItem.startingPrice || "",
+        currentPrice: initialItem.currentPrice || "",
+        endTime: initialItem.endTime || "",
+      });
+    }
+  }, [initialItem]);
 
   // onChange
   const handleChange = (e) => {
@@ -30,83 +35,39 @@ export default function LiveAuction({ user }) {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // submit add item to db
+  // submit edit req
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/items/add", {
+      const response = await fetch(`/api/items/edit/${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
       const data = await response.json();
       if (response.ok) {
-        alert("Item added");
+        alert("Item updated");
         router.push("/items");
       } else alert(data.message);
     } catch (error) {
       alert("An error occurred");
     }
   };
-  // --------------------------------------------------------------------------------
 
   // render
   return (
     <>
-      {/* <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="itemName"
-          value={form.itemName}
-          onChange={handleChange}
-          placeholder="itemName"
-          required
-        />
-        <input
-          type="text"
-          name="description"
-          value={form.description}
-          onChange={handleChange}
-          placeholder="description"
-          required
-        />
-        <input
-          type="text"
-          name="imageUrl"
-          value={form.imageUrl}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="startingPrice"
-          value={form.startingPrice}
-          onChange={handleChange}
-          placeholder="startingPrice"
-          required
-        />
-        <input
-          type="date"
-          name="endTime"
-          value={form.endTime}
-          onChange={handleChange}
-          placeholder="endTime"
-          required
-        />
-        
-        <button type="submit">Add</button>
-      </form> */}
       <Header user={user} />
-      <div class="container my-5">
-        <div class="form-wrapper">
-          <div class="form-title2">
-            <h3>Upload an Item</h3>
-            <p class="para">Get your item to be sold!</p>
+      <div className="container my-5">
+        <div className="form-wrapper">
+          <div className="form-title2">
+            <h3>Update an Item</h3>
+            <p className="para">Get your item to be sold!</p>
           </div>
-          <form action="POST" onSubmit={handleSubmit}>
-            <div class="row">
-              <div class="col-12">
-                <div class="form-inner">
+          <form onSubmit={handleSubmit}>
+            <div className="row">
+              <div className="col-12">
+                <div className="form-inner">
                   <input
                     type="text"
                     name="itemName"
@@ -118,8 +79,8 @@ export default function LiveAuction({ user }) {
                 </div>
               </div>
 
-              <div class="col-12">
-                <div class="form-inner">
+              <div className="col-12">
+                <div className="form-inner">
                   <input
                     type="text"
                     name="imageUrl"
@@ -130,8 +91,8 @@ export default function LiveAuction({ user }) {
                   />
                 </div>
               </div>
-              <div class="col-xl-6 col-lg-12 col-md-6">
-                <div class="form-inner">
+              <div className="col-xl-6 col-lg-12 col-md-6">
+                <div className="form-inner">
                   <input
                     type="text"
                     name="startingPrice"
@@ -142,8 +103,8 @@ export default function LiveAuction({ user }) {
                   />
                 </div>
               </div>
-              <div class="col-xl-6 col-lg-12 col-md-6">
-                <div class="form-inner">
+              <div className="col-xl-6 col-lg-12 col-md-6">
+                <div className="form-inner">
                   <input
                     type="date"
                     name="endTime"
@@ -154,8 +115,8 @@ export default function LiveAuction({ user }) {
                   />
                 </div>
               </div>
-              <div class="col-12">
-                <div class="form-inner">
+              <div className="col-12">
+                <div className="form-inner">
                   <textarea
                     name="description"
                     value={form.description}
@@ -166,13 +127,8 @@ export default function LiveAuction({ user }) {
                 </div>
               </div>
 
-              <div class="col-12">
-                <button
-                  type="submit"
-                  class="eg-btn btn--primary btn--md form--btn"
-                >
-                  Add item
-                </button>
+              <div className="col-12">
+                <button type="submit" className="eg-btn btn--primary btn--md form--btn">Update item</button>
               </div>
             </div>
           </form>
@@ -182,12 +138,13 @@ export default function LiveAuction({ user }) {
   );
 }
 
-// to check signed in
 import jwt from "jsonwebtoken";
 
 export async function getServerSideProps(context) {
-  const { default: User } = await import("../../../db/models/User");
-  const { req } = context;
+  const { default: User } = await import("../../../../db/models/User");
+  const { default: Item } = await import("../../../../db/models/Item");
+
+  const { req, params } = context;
   const token = req.cookies.authToken || "";
 
   try {
@@ -195,10 +152,19 @@ export async function getServerSideProps(context) {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.id).lean(); // check user on database
 
+    const item = await Item.findById(params.id).lean();
     return {
       props: {
-        user: user
-          ? { id: user._id.toString(), username: user.username }
+        user: user ? { id: user._id.toString(), username: user.username } : null,
+        initialItem: item
+          ? {
+              name: item.itemName || "",
+              description: item.description || "",
+              imageUrl: item.imageUrl || "",
+              startingPrice: item.startingPrice || "",
+              currentPrice: item.currentPrice || "",
+              endTime: item.endTime ? item.endTime.toISOString().split('T')[0] : "",
+            }
           : null,
       },
     };
@@ -206,6 +172,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         user: null,
+        initialItem: null,
       },
     };
   }

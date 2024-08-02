@@ -77,7 +77,7 @@ export async function getServerSideProps(context) {
     const user = await User.findById(decoded.id).lean(); // check user on database
     return {
       props: {
-        user: user ? { username: user.username } : null,
+        user: user ? {  id: user._id.toString(), username: user.username } : null,
       },
     };
   } catch (error) {

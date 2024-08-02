@@ -9,9 +9,7 @@ export default function About({ user }) {
       <div className="inner-banner">
         <div className="container">
           <h2
-            className="inner-banner-title wow fadeInLeft"
-            data-wow-duration="1.5s"
-            data-wow-delay=".2s"
+            className="inner-banner-title"
           >
             About Us
           </h2>
@@ -40,7 +38,7 @@ export default function About({ user }) {
                 <div className="total-tag">
                   <img src="../assets/images/bg/total-tag.png" alt />
                   <h6>Total Raised</h6>
-                  <h5>$45,390.00</h5>
+                  <h5>$1,505.00</h5>
                 </div>
                 <img
                   src="../assets/images/bg/about-img.png"
@@ -102,20 +100,12 @@ export default function About({ user }) {
         </div>
       </div>
       <div className="choose-us-section pb-120" id="choose-us">
-        <img
-          src="../assets/images/bg/section-bg.png"
-          className="section-bg-bottom"
-          alt
-        />
+       
         <div className="container position-relative">
-          <img
-            src="../assets/images/bg/angle-vector.png"
-            className="img-fluid angle-vector"
-            alt
-          />
+          
           <div className="row d-flex justify-content-center">
             <div className="col-sm-12 col-md-10 col-lg-8 col-xl-6">
-              <div className="section-title1">
+              <div className="section-title">
                 <h2>Why Choose Us</h2>
                 <p className="mb-0">
                   Explore on the world's best & largest Bidding marketplace with
@@ -128,11 +118,8 @@ export default function About({ user }) {
           <div className="row d-flex justify-content-center g-4">
             <div className="col-lg-4 col-md-6 col-sm-10">
               <div
-                className="single-feature hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".2s"
+                className="single-feature"
               >
-                <span className="sn">01</span>
                 <div className="icon">
                   <svg
                     width="68"
@@ -164,11 +151,8 @@ export default function About({ user }) {
             </div>
             <div className="col-lg-4 col-md-6 col-sm-10">
               <div
-                className="single-feature hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".4s"
+                className="single-feature"
               >
-                <span className="sn">02</span>
                 <div className="icon">
                   <svg
                     width="68"
@@ -206,12 +190,7 @@ export default function About({ user }) {
               </div>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-10">
-              <div
-                className="single-feature hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".4s"
-              >
-                <span className="sn">03</span>
+              <div className="single-feature">
                 <div className="icon">
                   <svg
                     width="68"
@@ -243,12 +222,7 @@ export default function About({ user }) {
               </div>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-10">
-              <div
-                className="single-feature hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".8s"
-              >
-                <span className="sn">04</span>
+              <div className="single-feature">
                 <div className="icon">
                   <svg
                     width="68"
@@ -275,12 +249,7 @@ export default function About({ user }) {
               </div>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-10">
-              <div
-                className="single-feature hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay="1s"
-              >
-                <span className="sn">05</span>
+              <div className="single-feature">
                 <div className="icon">
                   <svg
                     width="68"
@@ -305,12 +274,7 @@ export default function About({ user }) {
               </div>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-10">
-              <div
-                className="single-feature hover-border1 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".8s"
-              >
-                <span className="sn">06</span>
+              <div className="single-feature">
                 <div className="icon">
                   <svg
                     width="68"
@@ -355,7 +319,7 @@ export async function getServerSideProps(context) {
     const user = await User.findById(decoded.id).lean(); // check user on database
     return {
       props: {
-        user: user ? { username: user.username } : null,
+        user: user ? {  id: user._id.toString(), username: user.username } : null,
       },
     };
   } catch (error) {

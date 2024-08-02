@@ -1,28 +1,27 @@
-import AuctionItemBlock from "../../components/Auction-Item-Block";
 import { useEffect, useState } from "react";
 
+import AuctionItemBlock from "../../components/Auction-Item-Block";
 import Header from "../../components/Header";
 
 export default function LiveAuction({ user }) {
   const [items, setItems] = useState([]);
 
+  // display items
   useEffect(() => {
     fetch("/api/items")
       .then((response) => response.json())
       .then((data) => setItems(data))
       .catch((error) => console.error("Error fetching items:", error));
   }, []);
+  // --------------------------------------------------------------------------------
 
+  // render
   return (
     <>
       <Header user={user} />
       <div className="inner-banner">
         <div className="container">
-          <h2
-            className="inner-banner-title"
-          >
-            Live Auction
-          </h2>
+          <h2 className="inner-banner-title">Live Auction</h2>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
@@ -111,7 +110,9 @@ export async function getServerSideProps(context) {
 
     return {
       props: {
-        user: user ? { username: user.username } : null,
+        user: user
+          ? { id: user._id.toString(), username: user.username }
+          : null,
       },
     };
   } catch (error) {

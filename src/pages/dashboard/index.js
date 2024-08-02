@@ -24,18 +24,14 @@ function Dashboard({ user }) {
       <Header user={user} />
       <div className="inner-banner">
         <div className="container">
-          <h2
-            className="inner-banner-title wow fadeInLeft"
-            data-wow-duration="1.5s"
-            data-wow-delay=".2s"
-          >
+          <h2 className="inner-banner-title" >
             {user.username}'s Dashboard
           </h2>
           <Link href={`dashboard/${user.id}`}>Link</Link>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="index-2.html">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 Dashboard
@@ -45,16 +41,8 @@ function Dashboard({ user }) {
         </div>
       </div>
       <div className="dashboard-section pt-120 pb-120">
-        <img
-          alt="image"
-          src="/images/bg/section-bg.png"
-          className="img-fluid section-bg-top"
-        />
-        <img
-          alt="image"
-          src="/images/bg/section-bg.png"
-          className="img-fluid section-bg-bottom"
-        />
+        
+       
         <div className="container">
           <div className="row g-4">
             <div className="col-lg-3">
@@ -76,18 +64,7 @@ function Dashboard({ user }) {
                   aria-controls="v-pills-dashboard"
                   aria-selected="true"
                 >
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <defs>
-                      <clipPath id="clip0_388_603">
-                        <rect width="22" height="22" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
+                  
                   Dashboard{" "}
                 </button>
                 <button
@@ -100,15 +77,7 @@ function Dashboard({ user }) {
                   aria-controls="v-pills-profile"
                   aria-selected="true"
                 >
-                  <i className="lar la-user"></i>
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    
-                  </svg>
+                  
                   My Profile{" "}
                 </button>
                 <button
@@ -121,14 +90,7 @@ function Dashboard({ user }) {
                   aria-controls="v-pills-order"
                   aria-selected="true"
                 >
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    
-                  </svg>{" "}
+                 
                   Order Bidding{" "}
                 </button>
                 <button
@@ -141,13 +103,7 @@ function Dashboard({ user }) {
                   aria-controls="v-pills-purchase"
                   aria-selected="true"
                 >
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                  </svg>{" "}
+                 
                   Purchase{" "}
                 </button>
                 <button
@@ -156,18 +112,7 @@ function Dashboard({ user }) {
                   type="button"
                   role="tab"
                 >
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <defs>
-                      <clipPath id="clip0_382_377">
-                        <rect width="22" height="22" />
-                      </clipPath>
-                    </defs>
-                  </svg>
+                  
                   Logout{" "}
                 </button>
               </div>
@@ -183,11 +128,7 @@ function Dashboard({ user }) {
                   <div className="dashboard-area box--shadow">
                     <div className="row g-4">
                       <div className="col-md-6 col-sm-6">
-                        <div
-                          className="dashboard-card hover-border1 wow fadeInDown"
-                          data-wow-duration="1.5s"
-                          data-wow-delay=".2s"
-                        >
+                        <div className="dashboard-card">
                           <div className="header">
                             <h5>Order Pending</h5>
                           </div>
