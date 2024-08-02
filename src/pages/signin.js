@@ -97,12 +97,12 @@ export default function Login({ user }) {
                         <div className="form-group">
                           <input type="checkbox" id="html" />
                           <label for="html">
-                            I agree to the <a href="#">Terms & Policy</a>
+                            I agree to the <Link href="#">Terms & Policy</Link>
                           </label>
                         </div>
-                        <a href="#" className="forgot-pass">
+                        <Link href="#" className="forgot-pass">
                           Forgotten Password
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -112,8 +112,8 @@ export default function Login({ user }) {
                   <p>
                     By clicking the "signup" button, you create a AuctionHive
                     account, and you agree to AuctionHive's{" "}
-                    <a href="#">Terms & Conditions</a> &{" "}
-                    <a href="#">Privacy Policy.</a>
+                    <Link href="#">Terms & Conditions</Link> &{" "}
+                    <Link href="#">Privacy Policy.</Link>
                   </p>
                 </div>
               </div>

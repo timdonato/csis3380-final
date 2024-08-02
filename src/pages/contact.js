@@ -1,4 +1,4 @@
-
+import Link from "next/link";
 import Header from "../components/Header";
 
 export default function Contact({ user }) {
@@ -21,7 +21,7 @@ export default function Contact({ user }) {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="/">Home</a>
+                <Link href="/">Home</Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 Contact

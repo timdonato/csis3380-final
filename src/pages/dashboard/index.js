@@ -31,7 +31,7 @@ function Dashboard({ user }) {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="/">Home</a>
+                <Link href="/">Home</Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 Dashboard
@@ -607,29 +607,29 @@ function Dashboard({ user }) {
                     <nav className="pagination-wrap">
                       <ul className="pagination style-two d-flex justify-content-center gap-md-3 gap-2">
                         <li className="page-item">
-                          <a className="page-link" href="#" tabindex="-1">
+                          <Link className="page-link" href="#" tabindex="-1">
                             Prev
-                          </a>
+                          </Link>
                         </li>
                         <li className="page-item active" aria-current="page">
-                          <a className="page-link" href="#">
+                          <Link className="page-link" href="#">
                             01
-                          </a>
+                          </Link>
                         </li>
                         <li className="page-item">
-                          <a className="page-link" href="#">
+                          <Link className="page-link" href="#">
                             02
-                          </a>
+                          </Link>
                         </li>
                         <li className="page-item">
-                          <a className="page-link" href="#">
+                          <Link className="page-link" href="#">
                             03
-                          </a>
+                          </Link>
                         </li>
                         <li className="page-item">
-                          <a className="page-link" href="#">
+                          <Link className="page-link" href="#">
                             Next
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </nav>
@@ -732,29 +732,29 @@ function Dashboard({ user }) {
                     <nav className="pagination-wrap">
                       <ul className="pagination style-two d-flex justify-content-center gap-md-3 gap-2">
                         <li className="page-item">
-                          <a className="page-link" href="#" tabindex="-1">
+                          <Link className="page-link" href="#" tabindex="-1">
                             Prev
-                          </a>
+                          </Link>
                         </li>
                         <li className="page-item">
-                          <a className="page-link" href="#">
+                          <Link className="page-link" href="#">
                             01
-                          </a>
+                          </Link>
                         </li>
                         <li className="page-item active" aria-current="page">
-                          <a className="page-link" href="#">
+                          <Link className="page-link" href="#">
                             02
-                          </a>
+                          </Link>
                         </li>
                         <li className="page-item">
-                          <a className="page-link" href="#">
+                          <Link className="page-link" href="#">
                             03
-                          </a>
+                          </Link>
                         </li>
                         <li className="page-item">
-                          <a className="page-link" href="#">
+                          <Link className="page-link" href="#">
                             Next
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </nav>

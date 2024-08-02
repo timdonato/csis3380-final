@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Signup() {
   
@@ -64,7 +65,7 @@ export default function Signup() {
                 <h3>Sign Up</h3>
                 <p>
                   Do you already have an account?{" "}
-                  <a href="/signin">Log in here</a>
+                  <Link href="/signin">Log in here</Link>
                 </p>
               </div>
               <form className="w-100" onSubmit={handleSubmit}>
@@ -144,8 +145,8 @@ export default function Signup() {
               <div className="form-poicy-area mt-3">
                 <p>
                   By clicking the "signup" button, you create a Cobiro account,
-                  and you agree to Cobiro's <a href="#">Terms & Conditions</a> &{" "}
-                  <a href="#">Privacy Policy.</a>
+                  and you agree to Cobiro's <Link href="#">Terms & Conditions</Link> &{" "}
+                  <Link href="#">Privacy Policy.</Link>
                 </p>
               </div>
             </div>

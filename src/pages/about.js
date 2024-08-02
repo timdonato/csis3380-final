@@ -16,7 +16,7 @@ export default function About({ user }) {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="/">Home</a>
+                <Link href="/">Home</Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 About Us
@@ -60,20 +60,20 @@ export default function About({ user }) {
                 </p>
                 <ul className="about-list">
                   <li>
-                    <a href="#">Together, We Make a Difference</a>
+                    <Link href="#">Together, We Make a Difference</Link>
                   </li>
                   <li>
-                    <a href="#">With your support, we ensure that essential needs are met</a>
+                    <Link href="#">With your support, we ensure that essential needs are met</Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link href="#">
                       Our commitment extends to making significant contributions
-                    </a>
+                    </Link>
                   </li>
                 </ul>
-                <a href="#choose-us" className="eg-btn btn--primary btn--md">
+                <Link href="#choose-us" className="eg-btn btn--primary btn--md">
                   More About
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function About({ user }) {
                 </div>
                 <div className="content">
                   <h5>
-                    <a href="#">High Quality Products</a>
+                    <Link href="#">High Quality Products</Link>
                   </h5>
                   <p className="para">
                     Voluptate aut blanditiis accusantium offic expedita dolorem
@@ -160,7 +160,7 @@ export default function About({ user }) {
                 </div>
                 <div className="content">
                   <h5>
-                    <a href="#">Creator's Royalty</a>
+                    <Link href="#">Creator's Royalty</Link>
                   </h5>
                   <p className="para">
                     Voluptate aut blanditiis accusantium offic expedita dolorem
@@ -192,7 +192,7 @@ export default function About({ user }) {
                 </div>
                 <div className="content">
                   <h5>
-                    <a href="#">Top Calss Product Price</a>
+                    <Link href="#">Top Calss Product Price</Link>
                   </h5>
                   <p className="para">
                     Voluptate aut blanditiis accusantium offic expedita dolorem
@@ -219,7 +219,7 @@ export default function About({ user }) {
                 </div>
                 <div className="content">
                   <h5>
-                    <a href="#">Support Multiple Currency</a>
+                    <Link href="#">Support Multiple Currency</Link>
                   </h5>
                   <p className="para">
                     Voluptate aut blanditiis accusantium offic expedita dolorem
@@ -244,7 +244,7 @@ export default function About({ user }) {
                 </div>
                 <div className="content">
                   <h5>
-                    <a href="#">Show All Bidders History</a>
+                    <Link href="#">Show All Bidders History</Link>
                   </h5>
                   <p className="para">
                     Voluptate aut blanditiis accusantium offic expedita dolorem
@@ -268,7 +268,7 @@ export default function About({ user }) {
                 </div>
                 <div className="content">
                   <h5>
-                    <a href="#">100% Happy Customer</a>
+                    <Link href="#">100% Happy Customer</Link>
                   </h5>
                   <p className="para">
                     Voluptate aut blanditiis accusantium offic expedita dolorem

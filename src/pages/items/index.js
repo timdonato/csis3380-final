@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AuctionItemBlock from "../../components/Auction-Item-Block";
 import Header from "../../components/Header";
+import Link from "next/link";
 
 export default function LiveAuction({ user }) {
   const [items, setItems] = useState([]);
@@ -41,7 +42,7 @@ export default function LiveAuction({ user }) {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="/">Home</a>
+                <Link href="/">Home</Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 Live Auction
@@ -55,7 +56,7 @@ export default function LiveAuction({ user }) {
           <div className="row gy-4 mb-60 d-flex justify-content-center">
             {currentItems.map((item) => (
               <div key={item._id} className="col-lg-4 col-md-6 col-sm-10">
-                <AuctionItemBlock
+                <LinkuctionItemBlock
                   id={item._id}
                   imageUrl={item.imageUrl}
                   description={item.description}
@@ -68,38 +69,38 @@ export default function LiveAuction({ user }) {
             <nav className="pagination-wrap">
               <ul className="pagination d-flex justify-content-center gap-md-3 gap-2">
                 <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                  <a
+                  <Link
                     className="page-link"
                     href="#"
                     onClick={() => handlePageChange(currentPage - 1)}
                     aria-disabled={currentPage === 1}
                   >
                     Prev
-                  </a>
+                  </Link>
                 </li>
                 {pageNumbers.map((number) => (
                   <li
                     key={number}
                     className={`page-item ${currentPage === number ? 'active' : ''}`}
                   >
-                    <a
+                    <Link
                       className="page-link"
                       href="#"
                       onClick={() => handlePageChange(number)}
                     >
                       {number}
-                    </a>
+                    </Link>
                   </li>
                 ))}
                 <li className={`page-item ${currentPage === pageNumbers.length ? 'disabled' : ''}`}>
-                  <a
+                  <Link
                     className="page-link"
                     href="#"
                     onClick={() => handlePageChange(currentPage + 1)}
                     aria-disabled={currentPage === pageNumbers.length}
                   >
                     Next
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>

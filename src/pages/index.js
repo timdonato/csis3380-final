@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import Header from "../components/Header";
 
 export default function Home({ user }) {
@@ -33,12 +34,12 @@ export default function Home({ user }) {
                             <p>
                             Auction Hive transforms the online bidding experience with its innovative platform designed for smart, strategic bidding. With a focus on user-friendly navigation and real-time updates, Auction Hive ensures that every click brings you closer to winning big. {" "}
                             </p>
-                            <a
+                            <Link
                               href="/items"
                               className="eg-btn btn--primary btn--lg"
                             >
                               Start Exploring
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -71,18 +72,18 @@ export default function Home({ user }) {
                     </div>
                     <div className="auction-content">
                       <h4>
-                        <a href="/auction-details">{item.itemName}</a>
+                        <Link href="/auction-details">{item.itemName}</Link>
                       </h4>
                       <p>
                         Bidding Price : <span>${item.currentPrice}</span>
                       </p>
                       <div className="auction-card-bttm">
-                        <a
+                        <Link
                           href={`/items/${item._id}`}
                           className="eg-btn btn--primary btn--sm"
                         >
                           Place a Bid
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -91,12 +92,12 @@ export default function Home({ user }) {
             </div>
             <div className="row d-flex justify-content-center">
               <div className="col-md-4 text-center">
-                <a
+                <Link
                   href="/items"
                   className="eg-btn btn--primary btn--md mx-auto"
                 >
                   View All
-                </a>
+                </Link>
               </div>
             </div>
           </div>

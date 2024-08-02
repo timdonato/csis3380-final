@@ -82,7 +82,7 @@ function Header({ user }) {
           <div className="hotline-info">
             <span>Click To Call</span>
             <h6>
-              <a href="tel:123-456-789">+123-456-789</a>
+              <Link href="tel:123-456-789">+123-456-789</Link>
             </h6>
           </div>
         </div>
