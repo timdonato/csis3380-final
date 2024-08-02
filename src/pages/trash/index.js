@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from 'next/image';
 
 export default function ItemList() {
   const [items, setItems] = useState([]);
@@ -15,8 +16,8 @@ export default function ItemList() {
     <div>
       <h1>Items List:</h1>
       <ul>
-        {items.map((item) => (
-          <li key={item._id}>
+        {items.map((item, index) => (
+          <li key={index}>
             <Link href={`/items/${item._id}`}><h2>{item.itemName}</h2></Link>
             <p>{item.description}</p>
             <img src={item.imageUrl} alt={item.itemName} />
@@ -41,7 +42,7 @@ export async function getServerSideProps(context) {
 
   try {
     // JWT
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, "CSIS3380Project");
     const user = await User.findById(decoded.id).lean(); // check user on database
     return {
       props: {

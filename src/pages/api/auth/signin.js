@@ -21,7 +21,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: "wrong password" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id }, "CSIS3380Project", {
       expiresIn: "1h",
     });
 

@@ -1,7 +1,7 @@
 // pages/item/[id].js
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-
+import Image from 'next/image';
 // user
 import jwt from "jsonwebtoken";
 import User from "../../../db/models/User";
@@ -90,7 +90,7 @@ export async function getServerSideProps(context) {
   
     try {
       // JWT
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, "CSIS3380Project");
       const user = await User.findById(decoded.id).lean(); // check user on database
   
       return {

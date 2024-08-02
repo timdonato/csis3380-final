@@ -59,9 +59,9 @@ const Dashboard = ({ user }) => {
       <div className="dashboard-section pt-120 pb-120">
         <div class="container">
           <div class="row">
-            {items.map((item) => (
+            {items.map((item, index) => (
                   
-                  <div key={item._id}>
+                  <div key={index}>
                     <Link href={`/items/${item._id}`}>
                       <div className="col-md-12 mb-5">
                         <div className="dashboard-card">
@@ -102,7 +102,7 @@ export async function getServerSideProps(context) {
 
   try {
     // JWT
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, "CSIS3380Project");
     const user = await User.findById(decoded.id).lean(); // check user on database
     return {
       props: {

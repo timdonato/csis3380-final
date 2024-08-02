@@ -64,8 +64,8 @@ export default function Home({ user }) {
               </div>
             </div>
             <div className="row gy-4 mb-60 d-flex justify-content-center">
-              {items.slice(0, 3).map((item) => (
-                <div className="col-lg-4 col-md-6 col-sm-10 ">
+              {items.slice(0, 3).map((item, index) => (
+                <div key={index} className="col-lg-4 col-md-6 col-sm-10 ">
                   <div className="eg-card auction-card1">
                     <div className="auction-img">
                       <img alt="image" src={item.imageUrl} />
@@ -117,7 +117,7 @@ export async function getServerSideProps(context) {
 
   try {
     // JWT
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, "CSIS3380Project");
     const user = await User.findById(decoded.id).lean(); // check user on database
     return {
       props: {

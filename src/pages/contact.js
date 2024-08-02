@@ -65,7 +65,7 @@ export default function Contact({ user }) {
                         </div>
                         <div class="col-12">
                             <div class="form-inner">
-                                <textarea name="question" cols="80" rows="10" placeholder="What's your question?" />
+                                <textarea name="question" cols="80" rows="10" placeholder="What&apos;s your question?" />
                             </div>
                         </div>
                         
@@ -106,7 +106,7 @@ export async function getServerSideProps(context) {
 
   try {
     // JWT
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, "CSIS3380Project");
     const user = await User.findById(decoded.id).lean(); // check user on database
     return {
       props: {

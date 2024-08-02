@@ -149,7 +149,7 @@ export async function getServerSideProps(context) {
 
   try {
     // JWT
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, "CSIS3380Project");
     const user = await User.findById(decoded.id).lean(); // check user on database
 
     const item = await Item.findById(params.id).lean();

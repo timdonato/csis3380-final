@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import Link from "next/link";
+import Image from 'next/image';
 
 export default function About({ user }) {
   return (
@@ -88,7 +89,7 @@ export default function About({ user }) {
               <div className="section-title">
                 <h2>Why Choose Us</h2>
                 <p className="mb-0">
-                  Explore on the world's best & largest Bidding marketplace with
+                  Explore on the world&apos;s best & largest Bidding marketplace with
                   our beautiful Bidding products. We want to be a part of your
                   smile, success and future growth.
                 </p>
@@ -160,7 +161,7 @@ export default function About({ user }) {
                 </div>
                 <div className="content">
                   <h5>
-                    <Link href="#">Creator's Royalty</Link>
+                    <Link href="#">Creator&apos;s Royalty</Link>
                   </h5>
                   <p className="para">
                     Voluptate aut blanditiis accusantium offic expedita dolorem
@@ -293,9 +294,12 @@ export async function getServerSideProps(context) {
   const { req } = context;
   const token = req.cookies.authToken || "";
 
+
+
   try {
     // JWT
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    // const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, "CSIS3380Project");
     const user = await User.findById(decoded.id).lean(); // check user on database
     return {
       props: {

@@ -54,8 +54,8 @@ export default function LiveAuction({ user }) {
       <div className="live-auction-section pt-120 pb-120">
         <div className="container">
           <div className="row gy-4 mb-60 d-flex justify-content-center">
-            {currentItems.map((item) => (
-              <div key={item._id} className="col-lg-4 col-md-6 col-sm-10">
+            {currentItems.map((item, index) => (
+              <div key={index} className="col-lg-4 col-md-6 col-sm-10">
                 <AuctionItemBlock
                   id={item._id}
                   imageUrl={item.imageUrl}
@@ -120,7 +120,7 @@ export async function getServerSideProps(context) {
   const token = req.cookies.authToken || "";
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, "CSIS3380Project");
     const user = await User.findById(decoded.id).lean(); // check user on database
 
     return {
