@@ -145,7 +145,7 @@ export default function Signup() {
 
               <div className="form-poicy-area mt-3">
                 <p>
-                  By clicking the "signup" button, you create a Cobiro account,
+                  By clicking the &quot;signup&quot; button, you create a Cobiro account,
                   and you agree to Cobiro&apos;s <Link href="#">Terms & Conditions</Link> &{" "}
                   <Link href="#">Privacy Policy.</Link>
                 </p>

@@ -62,7 +62,7 @@ export default function LiveAuction({ user, initialItem }) {
         <div className="form-wrapper">
           <div className="form-title2">
             <h3>Update an Item</h3>
-            <p className="para">Get your item to be sold!</p>
+            <p className="para">Get your item to be sold</p>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="row">

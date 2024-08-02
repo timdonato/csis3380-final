@@ -111,7 +111,7 @@ export default function Login({ user }) {
                 </form>
                 <div className="form-policy-area mt-3">
                   <p>
-                    By clicking the "signup" button, you create a AuctionHive
+                    By clicking the &quot;signup&quot; button, you create a AuctionHive
                     account, and you agree to AuctionHive&apos;s{" "}
                     <Link href="#">Terms & Conditions</Link> &{" "}
                     <Link href="#">Privacy Policy.</Link>

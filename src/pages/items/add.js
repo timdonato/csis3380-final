@@ -53,55 +53,12 @@ export default function LiveAuction({ user }) {
   // render
   return (
     <>
-      {/* <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="itemName"
-          value={form.itemName}
-          onChange={handleChange}
-          placeholder="itemName"
-          required
-        />
-        <input
-          type="text"
-          name="description"
-          value={form.description}
-          onChange={handleChange}
-          placeholder="description"
-          required
-        />
-        <input
-          type="text"
-          name="imageUrl"
-          value={form.imageUrl}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="startingPrice"
-          value={form.startingPrice}
-          onChange={handleChange}
-          placeholder="startingPrice"
-          required
-        />
-        <input
-          type="date"
-          name="endTime"
-          value={form.endTime}
-          onChange={handleChange}
-          placeholder="endTime"
-          required
-        />
-        
-        <button type="submit">Add</button>
-      </form> */}
       <Header user={user} />
       <div class="container my-5">
         <div class="form-wrapper">
           <div class="form-title2">
             <h3>Upload an Item</h3>
-            <p class="para">Get your item to be sold!</p>
+            <p class="para">Get your item to be sold</p>
           </div>
           <form action="POST" onSubmit={handleSubmit}>
             <div class="row">
