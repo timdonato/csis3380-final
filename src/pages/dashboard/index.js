@@ -47,9 +47,7 @@ function Dashboard({ user }) {
           <div className="row g-4">
             <div className="col-lg-3">
               <div
-                className="nav flex-column nav-pills gap-4 wow fadeInUp"
-                data-wow-duration="1.5s"
-                data-wow-delay=".2s"
+                className="nav flex-column nav-pills gap-4"
                 id="v-pills-tab"
                 role="tablist"
                 aria-orientation="vertical"
@@ -150,7 +148,7 @@ function Dashboard({ user }) {
                       </div>
                       <div className="col-md-6 col-sm-6">
                         <div
-                          className="dashboard-card hover-border1 wow fadeInDown"
+                          className="dashboard-card"
                           data-wow-duration="1.5s"
                           data-wow-delay=".4s"
                         >
@@ -175,9 +173,7 @@ function Dashboard({ user }) {
                       </div>
                       <div className="col-md-6 col-sm-6">
                         <div
-                          className="dashboard-card hover-border1 wow fadeInDown"
-                          data-wow-duration="1.5s"
-                          data-wow-delay=".6s"
+                          className="dashboard-card"
                         >
                           <div className="header">
                             <h5>Order Picked</h5>
@@ -199,11 +195,7 @@ function Dashboard({ user }) {
                         </div>
                       </div>
                       <div className="col-md-6 col-sm-6">
-                        <div
-                          className="dashboard-card hover-border1 wow fadeInDown"
-                          data-wow-duration="1.5s"
-                          data-wow-delay=".8s"
-                        >
+                        <div className="dashboard-card">
                           <div className="header">
                             <h5>Order Completed</h5>
                           </div>

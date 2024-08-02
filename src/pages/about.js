@@ -36,58 +36,38 @@ export default function About({ user }) {
             <div className="col-lg-6 col-md-10">
               <div className="about-img-area">
                 <div className="total-tag">
-                  <img src="../assets/images/bg/total-tag.png" alt />
                   <h6>Total Raised</h6>
                   <h5>$1,505.00</h5>
                 </div>
                 <img
                   src="../assets/images/bg/about-img.png"
-                  className="img-fluid about-img wow fadeInUp"
-                  data-wow-duration="1.5s"
-                  data-wow-delay=".2s"
+                  className="img-fluid about-img"
                   alt="about-img"
-                />
-                <img
-                  src="../assets/images/bg/about-linear.png"
-                  className="img-fluid about-linear"
-                  alt
-                />
-                <img
-                  src="../assets/images/bg/about-linear.png"
-                  className="img-fluid about-vector"
-                  alt
                 />
               </div>
             </div>
             <div className="col-lg-6 col-md-10">
               <div
-                className="about-content wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".2s"
+                className="about-content"
               >
                 <span>Who we are!</span>
-                <h2>We Work for Your Incredible Success</h2>
+                <h2>Dedicated to Your Remarkable Success</h2>
                 <p className="para">
-                  Auction sites present consumers with a thrilling, competitive
-                  way to buy the goods and services they need most.
+                  Auction sites offer consumers an exhilarating and competitive way to acquire the goods and services they desire most.
                 </p>
                 <p className="para">
-                  But getting your own auction site up and running has always
-                  required learning complex coding languages, or hiring an
-                  expensive design firm for thousands of dollars and months of
-                  work.
+                  Launching your own auction site traditionally involved mastering complex coding languages or spending thousands of dollars and months of effort with a high-priced design firm.
                 </p>
                 <ul className="about-list">
                   <li>
-                    <a href="#">Have enough food for life.</a>
+                    <a href="#">Together, We Make a Difference</a>
                   </li>
                   <li>
-                    <a href="#">Poor children can return to school.</a>
+                    <a href="#">With your support, we ensure that essential needs are met</a>
                   </li>
                   <li>
                     <a href="#">
-                      Fuga magni veritatis ad temporibus atque adipisci nisi
-                      rerum...
+                      Our commitment extends to making significant contributions
                     </a>
                   </li>
                 </ul>

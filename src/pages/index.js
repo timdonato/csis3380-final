@@ -20,7 +20,7 @@ export default function Home({ user }) {
       <>
         <div className="hero-area hero-style">
           <div className="hero-main-wrapper position-relative">
-            <div className="swiper banner1">
+            <div className="swiper banner">
               <div className="swiper-wrapper">
                 <div className="swiper-slide">
                   <div className="slider-bg">
@@ -29,13 +29,9 @@ export default function Home({ user }) {
                         <div className="col-xl-10 col-lg-10">
                           <div className="banner-content">
                             <span>Welcome To Auction Hive</span>
-                            <h1>Build, sell & collect digital items.</h1>
+                            <h1>Bid Smart, Win Big—Auction Hive!</h1>
                             <p>
-                              Nulla facilisi. Maecenas ac tellus ut ligula
-                              interdum convallis. Nullam dapibus on erat in
-                              dolor posuere, none hendrerit lectus ornare.
-                              Suspendisse sit amet turpina sagittis, ultrices
-                              dui et, aliquam none hendrerit lectus.{" "}
+                            Auction Hive transforms the online bidding experience with its innovative platform designed for smart, strategic bidding. With a focus on user-friendly navigation and real-time updates, Auction Hive ensures that every click brings you closer to winning big. {" "}
                             </p>
                             <a
                               href="/items"
@@ -54,28 +50,22 @@ export default function Home({ user }) {
           </div>
         </div>
         <div className="live-auction pb-120 pt-120">
-          <img
-            alt="image"
-            src="../assets/images/bg/section-bg.png"
-            className="img-fluid section-bg"
-          />
+         
           <div className="container position-relative">
             <div className="row d-flex justify-content-center">
               <div className="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                 <div className="section-title">
                   <h2>Live Auction</h2>
                   <p className="mb-0">
-                    Explore on the world's best & largest Bidding marketplace
-                    with our beautiful Bidding products. We want to be a part of
-                    your smile, success and future growth.
+                    Discover the premier auction marketplace through our exquisite products. We aim to be a part of your journey towards joy, success, and future achievements.
                   </p>
                 </div>
               </div>
             </div>
             <div className="row gy-4 mb-60 d-flex justify-content-center">
-              {items.map((item) => (
+              {items.slice(0, 3).map((item) => (
                 <div className="col-lg-4 col-md-6 col-sm-10 ">
-                  <div data-wow-delay="0.4s" className="eg-card auction-card1">
+                  <div className="eg-card auction-card1">
                     <div className="auction-img">
                       <img alt="image" src={item.imageUrl} />
                     </div>
@@ -102,7 +92,7 @@ export default function Home({ user }) {
             <div className="row d-flex justify-content-center">
               <div className="col-md-4 text-center">
                 <a
-                  href="/live-auction"
+                  href="/items"
                   className="eg-btn btn--primary btn--md mx-auto"
                 >
                   View All

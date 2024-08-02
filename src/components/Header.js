@@ -1,37 +1,47 @@
+import { useState } from 'react';
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 function Header({ user }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
 
   // handle sign out
   const handleSignOut = () => {
-    document.cookie =
-      "authToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    document.cookie = "authToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     router.push("/");
   };
 
-  // render
+  // toggle menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // handle menu close
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="header-area">
       <div className="header-logo">
         <Link href="/">
           <img
-            src="../assets/images/logo.png"
+            src="../assets/images/logo-white.png"
             alt="Auction Hive"
             height="40"
             width="40"
           />
         </Link>
       </div>
-      <div className="main-menu">
+      <div className={`main-menu ${isMenuOpen ? 'show-menu' : ''}`}>
         <div className="mobile-logo-area d-lg-none d-flex justify-content-between align-items-center">
           <div className="mobile-logo-wrap">
             <Link href="/">
-              <img alt="image" src="../assets/images/bg/header-logo.png" />
+              <img alt="image" src="../assets/images/logo.png" />
             </Link>
           </div>
-          <div className="menu-close-btn">
+          <div className="menu-close-btn" onClick={closeMenu}>
             <i className="bi bi-x-lg"></i>
           </div>
         </div>
@@ -46,48 +56,23 @@ function Header({ user }) {
             <Link href="/items">Browse Products</Link>
           </li>
           <li>
-            <Link href="/contact">Contact</Link>
+            <Link href="/contact">Contact Us</Link>
           </li>
-          <li>
-            {user && user.username === "superuser" ? (
-  <Link href="/items/add">Register Item</Link>
-) : null}
-          </li>
-          {/* <li className="menu-item-has-children">
-            <Link href="#">Account</Link>
-            <i className="bx bx-plus dropdown-icon"></i>
-            <ul className="submenu">
-              <li>
-                <Link href="/dashboard">Dashboard</Link>
-              </li>
-              <li>
-                <Link href="/signin">Login</Link>
-              </li>
-              <li>
-                <Link href="/signup">Sign Up</Link>
-              </li>
-            </ul>
-          </li> */}
-          
+          {user && user.username === "superuser" ? (
+            <li>
+              <Link href="/items/add">Register Item</Link>
+            </li>
+          ) : null}
+          {user ? (
+             <li>
+              <Link href={`/dashboard/${user.id}`} className="d-lg-none d-block">My Account</Link>
+            </li>
+          ) : (
+            <li>
+              <Link href="/signin" className="d-lg-none d-flex">Sign in</Link>
+            </li>
+          )}
         </ul>
-        <div className="d-lg-none d-block">
-          <form className="mobile-menu-form mb-5">
-            <div className="input-with-btn d-flex flex-column">
-              <input type="text" placeholder="Search here..." />
-              <button type="submit" className="eg-btn btn--primary btn--sm">
-                Search
-              </button>
-            </div>
-          </form>
-          <div className="hotline two">
-            <div className="hotline-info">
-              <span>Click To Call</span>
-              <h6>
-                <a href="tel:347-274-8816">+347-274-8816</a>
-              </h6>
-            </div>
-          </div>
-        </div>
       </div>
       <div className="nav-right d-flex align-items-center">
         <div className="hotline d-xxl-flex d-none">
@@ -101,9 +86,6 @@ function Header({ user }) {
             </h6>
           </div>
         </div>
-        <div className="search-btn">
-          <i className="bi bi-search"></i>
-        </div>
         {user ? (
           <div
             onClick={handleSignOut}
@@ -114,14 +96,15 @@ function Header({ user }) {
         ) : (
           <div />
         )}
-        &nbsp;&nbsp;<div className="eg-btn btn--primary header-btn">
+        &nbsp;&nbsp;
+        <div className="eg-btn btn--primary header-btn">
           {user ? (
             <Link href={`/dashboard/${user.id}`}>My Account</Link>
           ) : (
             <Link href="/signin">Sign in</Link>
           )}
         </div>
-        <div className="mobile-menu-btn d-lg-none d-block">
+        <div className="mobile-menu-btn d-lg-none d-block" onClick={toggleMenu}>
           <i className="bx bx-menu"></i>
         </div>
       </div>

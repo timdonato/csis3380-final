@@ -111,11 +111,7 @@ export default function AuctionDetails({ user }) {
       <Header user={user} />
       <div class="inner-banner">
         <div class="container">
-          <h2
-            class="inner-banner-title  wow fadeInLeft"
-            data-wow-duration="1.5s"
-            data-wow-delay=".4s"
-          >
+          <h2 class="inner-banner-title">
             Auction Details
           </h2>
           <nav aria-label="breadcrumb">
@@ -131,105 +127,20 @@ export default function AuctionDetails({ user }) {
         </div>
       </div>
       <div class="auction-details-section pt-120">
-        <img
-          alt="image"
-          src="/images/bg/section-bg.png"
-          class="img-fluid section-bg-top"
-        />
-        <img
-          alt="image"
-          src="/images/bg/section-bg.png"
-          class="img-fluid section-bg-bottom"
-        />
+       
         <div class="container">
           <div class="row g-4 mb-50">
             <div class="col-xl-6 col-lg-7 d-flex flex-row align-items-start justify-content-lg-start justify-content-center flex-md-nowrap flex-wrap gap-4">
-              <ul
-                class="nav small-image-list d-flex flex-md-column flex-row justify-content-center gap-4  wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".4s"
-              >
-                <li class="nav-item">
-                  <div
-                    id="details-img1"
-                    data-bs-toggle="pill"
-                    data-bs-target="#gallery-img1"
-                    aria-controls="gallery-img1"
-                  >
-                    <img alt="image" src={item.imageUrl} class="img-fluid" />
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div
-                    id="details-img2"
-                    data-bs-toggle="pill"
-                    data-bs-target="#gallery-img2"
-                    aria-controls="gallery-img2"
-                  >
-                    <img
-                      alt="image"
-                      src="/images/bg/prod-gallery2.png"
-                      class="img-fluid"
-                    />
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <div
-                    id="details-img3"
-                    data-bs-toggle="pill"
-                    data-bs-target="#gallery-img3"
-                    aria-controls="gallery-img3"
-                  >
-                    <img
-                      alt="image"
-                      src="/images/bg/prod-gallery3.png"
-                      class="img-fluid"
-                    />
-                  </div>
-                </li>
-              </ul>
-              <div
-                class="tab-content mb-4 d-flex justify-content-lg-start justify-content-center  wow fadeInUp"
-                data-wow-duration="1.5s"
-                data-wow-delay=".4s"
-              >
-                <div
-                  class="tab-pane big-image fade show active"
-                  id="gallery-img1"
-                >
-                  <div class="auction-gallery-timer d-flex align-items-center justify-content-center flex-wrap">
-                    <h3 id="countdown-timer-1">&nbsp;</h3>
-                  </div>
+              
+              <div class="tab-content mb-4 d-flex justify-content-lg-start justify-content-center">
+                <div class="tab-pane big-image show active" id="gallery-img1">
                   <img alt="image" src={item.imageUrl} class="img-fluid" />
                 </div>
-                <div class="tab-pane big-image fade" id="gallery-img2">
-                  <div class="auction-gallery-timer d-flex align-items-center justify-content-center">
-                    <h3 id="countdown-timer-2">&nbsp;</h3>
-                  </div>
-                  <img
-                    alt="image"
-                    src="/images/bg/prod-gallery2.png"
-                    class="img-fluid"
-                  />
-                </div>
-                <div class="tab-pane big-image fade" id="gallery-img3">
-                  <div class="auction-gallery-timer d-flex align-items-center justify-content-center">
-                    <h3 id="countdown-timer-3">&nbsp;</h3>
-                  </div>
-                  <img
-                    alt="image"
-                    src="/images/bg/prod-gallery3.png"
-                    class="img-fluid"
-                  />
-                </div>
+                
               </div>
             </div>
             <div class="col-xl-6 col-lg-5">
-              <div
-                class="product-details-right  wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".2s"
-              >
+              <div class="product-details-right">
                 <h3>{item.itemName}</h3>
                 <p class="para">{item.description}</p>
                 <h4>
@@ -260,9 +171,7 @@ export default function AuctionDetails({ user }) {
           <div class="row d-flex justify-content-center g-4">
             <div class="col-lg-8">
               <ul
-                class="nav nav-pills d-flex flex-row justify-content-start gap-sm-4 gap-3 mb-45 wow fadeInDown"
-                data-wow-duration="1.5s"
-                data-wow-delay=".2s"
+                class="nav nav-pills d-flex flex-row justify-content-start gap-sm-4 gap-3 mb-45 "
                 id="pills-tab"
                 role="tablist"
               >
@@ -283,9 +192,7 @@ export default function AuctionDetails({ user }) {
               </ul>
               <div class="tab-content" id="pills-tabContent">
                 <div
-                  class="tab-pane fade show active wow fadeInUp"
-                  data-wow-duration="1.5s"
-                  data-wow-delay=".2s"
+                  class="tab-pane fade show active"
                   id="pills-home"
                   role="tabpanel"
                   aria-labelledby="pills-home-tab"
@@ -302,14 +209,15 @@ export default function AuctionDetails({ user }) {
                   </div>
                 </div>
                 {user.username == "superuser" ? (
-                  <>
+                  <div class="d-flex">
                     <Link href={`/items/edit/${id}`}>
-                      <input type="button" value="Edit" />
+                      <input type="button" value="Edit" class="eg-btn btn--primary2 btn--sm"/>
                     </Link>
+                    &nbsp;&nbsp;
                     <form onSubmit={handleDelete}>
-                      <input type="submit" value="delete" />
+                      <input type="submit" value="delete" class="eg-btn btn--primary2 btn--sm" />
                     </form>
-                  </>
+                  </div>
                 ) : (
                   ""
                 )}

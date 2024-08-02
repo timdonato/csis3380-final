@@ -1,21 +1,37 @@
 import { useEffect, useState } from "react";
-
 import AuctionItemBlock from "../../components/Auction-Item-Block";
 import Header from "../../components/Header";
 
 export default function LiveAuction({ user }) {
   const [items, setItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(9);
 
-  // display items
   useEffect(() => {
     fetch("/api/items")
       .then((response) => response.json())
       .then((data) => setItems(data))
       .catch((error) => console.error("Error fetching items:", error));
   }, []);
-  // --------------------------------------------------------------------------------
 
-  // render
+  // Calculate the items to display based on the current page
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Change page handler
+  const handlePageChange = (page) => {
+    if (page > 0 && page <= Math.ceil(items.length / itemsPerPage)) {
+      setCurrentPage(page);
+    }
+  };
+
+  // Render pagination controls
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(items.length / itemsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   return (
     <>
       <Header user={user} />
@@ -35,20 +51,10 @@ export default function LiveAuction({ user }) {
         </div>
       </div>
       <div className="live-auction-section pt-120 pb-120">
-        <img
-          alt="image"
-          src="../assets/images/bg/section-bg.png"
-          className="img-fluid section-bg-top"
-        />
-        <img
-          alt="image"
-          src="../assets/images/bg/section-bg.png"
-          className="img-fluid section-bg-bottom"
-        />
         <div className="container">
           <div className="row gy-4 mb-60 d-flex justify-content-center">
-            {items.map((item) => (
-              <div className="col-lg-4 col-md-6 col-sm-10 ">
+            {currentItems.map((item) => (
+              <div key={item._id} className="col-lg-4 col-md-6 col-sm-10">
                 <AuctionItemBlock
                   id={item._id}
                   imageUrl={item.imageUrl}
@@ -61,28 +67,37 @@ export default function LiveAuction({ user }) {
           <div className="row">
             <nav className="pagination-wrap">
               <ul className="pagination d-flex justify-content-center gap-md-3 gap-2">
-                <li className="page-item">
-                  <a className="page-link" href="#" tabindex="-1">
+                <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                  <a
+                    className="page-link"
+                    href="#"
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    aria-disabled={currentPage === 1}
+                  >
                     Prev
                   </a>
                 </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    01
-                  </a>
-                </li>
-                <li className="page-item active" aria-current="page">
-                  <a className="page-link" href="#">
-                    02
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    03
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
+                {pageNumbers.map((number) => (
+                  <li
+                    key={number}
+                    className={`page-item ${currentPage === number ? 'active' : ''}`}
+                  >
+                    <a
+                      className="page-link"
+                      href="#"
+                      onClick={() => handlePageChange(number)}
+                    >
+                      {number}
+                    </a>
+                  </li>
+                ))}
+                <li className={`page-item ${currentPage === pageNumbers.length ? 'disabled' : ''}`}>
+                  <a
+                    className="page-link"
+                    href="#"
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    aria-disabled={currentPage === pageNumbers.length}
+                  >
                     Next
                   </a>
                 </li>
@@ -104,7 +119,6 @@ export async function getServerSideProps(context) {
   const token = req.cookies.authToken || "";
 
   try {
-    // JWT
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.id).lean(); // check user on database
 
