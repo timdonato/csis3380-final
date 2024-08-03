@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header";
+import jwt from "jsonwebtoken";
+import cookie from 'cookie';
 
 function Search({ user }) {
   const router = useRouter();
@@ -31,45 +33,40 @@ function Search({ user }) {
             <h1>Search Results for <em>{query}</em></h1>
           </div>
           <div className="col-12">
-            
-              {results.length > 0 ? (
-                results.map((result) => (
-                    <div className="row my-3">
-                        <div className="col-3" key={result._id}>
-                            <Link href={`/items/${result._id}`}>
-                                <Image
-                                    src={result.imageUrl}
-                                    alt={result.itemName}
-                                    width={250}
-                                    height={250}
-                                />
-                            </Link>
-                        </div>
-                        <div className="col-9" key={result._id}>
-                            <Link href={`/items/${result._id}`}><h2>{result.itemName}</h2></Link>
-                        </div>
-                    
-                    </div>
-                ))
-              ) : (
-                <div className="col">
-                  <h2>No results found</h2>
-                  <div className="eg-btn btn--primary header-btn">
-                    <Link href="/">My Account</Link>
+            {results.length > 0 ? (
+              results.map((result) => (
+                <div className="row my-3" key={result._id}>
+                  <div className="col-3">
+                    <Link href={`/items/${result._id}`}>
+                        <Image
+                          src={result.imageUrl}
+                          alt={result.itemName}
+                          width={250}
+                          height={250}
+                        />
+                    </Link>
+                  </div>
+                  <div className="col-9">
+                    <Link href={`/items/${result._id}`}>
+                      <h2>{result.itemName}</h2>
+                    </Link>
                   </div>
                 </div>
-              )}
+              ))
+            ) : (
+              <div className="col">
+                <h2>No results found</h2>
+                <div className="eg-btn btn--primary header-btn">
+                  <Link href="/">My Account</Link>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </>
   );
 }
-
-export default Search;
-
-// to check signed in
-import jwt from "jsonwebtoken";
 
 export async function getServerSideProps(context) {
   const { default: User } = await import("../../db/models/User");
@@ -95,3 +92,5 @@ export async function getServerSideProps(context) {
     };
   }
 }
+
+export default Search;
