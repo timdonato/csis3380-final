@@ -58,8 +58,8 @@ export default function LiveAuction({ user }) {
               <div key={index} className="col-lg-4 col-md-6 col-sm-10">
                 <AuctionItemBlock
                   id={item._id}
+                  itemName={item.itemName}
                   imageUrl={item.imageUrl}
-                  description={item.description}
                   currentPrice={item.currentPrice}
                 />
               </div>

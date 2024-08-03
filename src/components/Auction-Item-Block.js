@@ -13,7 +13,7 @@ export default function AuctionItemBlock(props) {
         <div className="auction-content">
           <h4>
             <Link href={`items/${props.id}`}>
-             {props.description}
+             {props.itemName}
             </Link>
           </h4>
           <p>

@@ -1,11 +1,11 @@
 // src/pages/search.js
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import Header from '@/components/Header';
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import Header from "@/components/Header";
 
-function Search() {
+function Search({ user }) {
   const router = useRouter();
   const { query } = router.query;
   const [results, setResults] = useState([]);
@@ -24,28 +24,61 @@ function Search() {
 
   return (
     <>
-        <Header user={user} />
-        <div className="search-results">
-        <h1>Search Results for <em>{query}</em></h1>
+      <Header user={user} />
+      <div className="search-results">
+        <h1>
+          Search Results for <em>{query}</em>
+        </h1>
         {results.length > 0 ? (
-            <ul>
+          <ul>
             {results.map((result) => (
-                <li key={result._id}>
+              <li key={result._id}>
                 <Link href={`/items/${result._id}`}>
-                    <a>
-                    <Image src={result.image} alt={result.itemName} width={100} height={100} />
+                    <Image
+                      src={result.imageUrl}
+                      alt={result.itemName}
+                      width={100}
+                      height={100}
+                    />
                     <span>{result.itemName}</span>
-                    </a>
                 </Link>
-                </li>
+              </li>
             ))}
-            </ul>
+          </ul>
         ) : (
-            <p>No results found</p>
+          <p>No results found</p>
         )}
-        </div>
+      </div>
     </>
   );
 }
 
 export default Search;
+
+// to check signed in
+import jwt from "jsonwebtoken";
+
+export async function getServerSideProps(context) {
+  const { default: User } = await import("../../db/models/User");
+  const { req } = context;
+  const token = req.cookies.authToken || "";
+
+  try {
+    // JWT
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id).lean(); // check user on database
+    return {
+      props: {
+        user: user
+          ? { id: user._id.toString(), username: user.username }
+          : null,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        user: null,
+      },
+    };
+  }
+}
