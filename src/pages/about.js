@@ -27,23 +27,21 @@ export default function About({ user }) {
         </div>
       </div>
       <div className="about-section pt-120 pb-120">
-        <img
-          src="../assets/images/bg/section-bg.png"
-          className="img-fluid section-bg-top"
-          alt="section-bg"
-        />
+        
         <div className="container">
           <div className="row d-flex justify-content-center g-4">
             <div className="col-lg-6 col-md-10">
               <div className="about-img-area">
                 <div className="total-tag">
                   <h6>Total Raised</h6>
-                  <h5>$1,505.00</h5>
+                  <h5>$12,345.00</h5>
                 </div>
-                <img
-                  src="../assets/images/bg/about-img.png"
+                <Image
+                  src="/assets/images/bg/about-img.png"
                   className="img-fluid about-img"
                   alt="about-img"
+                  width={500}
+                  height={490}
                 />
               </div>
             </div>
@@ -89,9 +87,8 @@ export default function About({ user }) {
               <div className="section-title">
                 <h2>Why Choose Us</h2>
                 <p className="mb-0">
-                  Explore on the world&apos;s best & largest Bidding marketplace with
-                  our beautiful Bidding products. We want to be a part of your
-                  smile, success and future growth.
+                  Auction sites offer consumers an exhilarating and competitive way to acquire the goods and services they desire most.
+
                 </p>
               </div>
             </div>

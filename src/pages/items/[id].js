@@ -111,49 +111,49 @@ export default function AuctionDetails({ user }) {
   return (
     <>
       <Header user={user} />
-      <div class="inner-banner">
-        <div class="container">
-          <h2 class="inner-banner-title">
+      <div className="inner-banner">
+        <div className="container">
+          <h2 className="inner-banner-title">
             Auction Details
           </h2>
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
                 <Link href="/">Home</Link>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
+              <li className="breadcrumb-item active" aria-current="page">
                 Auction Details
               </li>
             </ol>
           </nav>
         </div>
       </div>
-      <div class="auction-details-section pt-120">
+      <div className="auction-details-section pt-120">
        
-        <div class="container">
-          <div class="row g-4 mb-50">
-            <div class="col-xl-6 col-lg-7 d-flex flex-row align-items-start justify-content-lg-start justify-content-center flex-md-nowrap flex-wrap gap-4">
+        <div className="container">
+          <div className="row g-4 mb-50">
+            <div className="col-xl-6 col-lg-7 d-flex flex-row align-items-start justify-content-lg-start justify-content-center flex-md-nowrap flex-wrap gap-4">
               
-              <div class="tab-content mb-4 d-flex justify-content-lg-start justify-content-center">
-                <div class="tab-pane big-image show active" id="gallery-img1">
-                  <img alt="image" src={item.imageUrl} class="img-fluid" />
+              <div className="tab-content mb-4 d-flex justify-content-lg-start justify-content-center">
+                <div className="tab-pane big-image show active" id="gallery-img1">
+                  <Image alt="image" src={item.imageUrl} className="img-fluid" height={500} width={500} />
                 </div>
                 
               </div>
             </div>
-            <div class="col-xl-6 col-lg-5">
-              <div class="product-details-right">
+            <div className="col-xl-6 col-lg-5">
+              <div className="product-details-right">
                 <h3>{item.itemName}</h3>
-                <p class="para">{item.description}</p>
+                <p className="para">{item.description}</p>
                 <h4>
                   Bidding Price: <span>${item.currentPrice}</span>
                 </h4>
-                <div class="bid-form">
-                  <div class="form-title">
+                <div className="bid-form">
+                  <div className="form-title">
                     <h5>Bid Now</h5>
                   </div>
                   <form onSubmit={handleSubmit}>
-                    <div class="form-inner gap-2">
+                    <div className="form-inner gap-2">
                       <input
                         type="text"
                         name="currentPrice"
@@ -161,7 +161,7 @@ export default function AuctionDetails({ user }) {
                         onChange={(e) => setPrice(Number(e.target.value))}
                         placeholder="$00.00"
                       />
-                      <button class="eg-btn btn--primary btn--sm" type="submit">
+                      <button className="eg-btn btn--primary btn--sm" type="submit">
                         Place Bid
                       </button>
                     </div>
@@ -170,16 +170,16 @@ export default function AuctionDetails({ user }) {
               </div>
             </div>
           </div>
-          <div class="row d-flex justify-content-center g-4">
-            <div class="col-lg-8">
+          <div className="row d-flex justify-content-center g-4">
+            <div className="col-lg-8">
               <ul
-                class="nav nav-pills d-flex flex-row justify-content-start gap-sm-4 gap-3 mb-45 "
+                className="nav nav-pills d-flex flex-row justify-content-start gap-sm-4 gap-3 mb-45 "
                 id="pills-tab"
                 role="tablist"
               >
-                <li class="nav-item" role="presentation">
+                <li className="nav-item" role="presentation">
                   <button
-                    class="nav-link active details-tab-btn"
+                    className="nav-link active details-tab-btn"
                     id="pills-home-tab"
                     data-bs-toggle="pill"
                     data-bs-target="#pills-home"
@@ -192,32 +192,32 @@ export default function AuctionDetails({ user }) {
                   </button>
                 </li>
               </ul>
-              <div class="tab-content" id="pills-tabContent">
+              <div className="tab-content" id="pills-tabContent">
                 <div
-                  class="tab-pane fade show active"
+                  className="tab-pane fade show active"
                   id="pills-home"
                   role="tabpanel"
                   aria-labelledby="pills-home-tab"
                 >
-                  <div class="describe-content">
-                    <ul class="describe-list">
+                  <div className="describe-content">
+                    <ul className="describe-list">
                       {bidMessages
                         .slice()
                         .reverse()
                         .map((msg, index) => (
-                          <p key={index}>{msg}</p>
+                          <li key={index}>{msg}</li>
                         ))}
                     </ul>
                   </div>
                 </div>
                 {user.username == "superuser" ? (
-                  <div class="d-flex">
+                  <div className="d-flex">
                     <Link href={`/items/edit/${id}`}>
-                      <input type="button" value="Edit" class="eg-btn btn--primary2 btn--sm"/>
+                      <input type="button" value="Edit" className="eg-btn btn--primary2 btn--sm"/>
                     </Link>
                     &nbsp;&nbsp;
                     <form onSubmit={handleDelete}>
-                      <input type="submit" value="delete" class="eg-btn btn--primary2 btn--sm" />
+                      <input type="submit" value="delete" className="eg-btn btn--primary2 btn--sm" />
                     </form>
                   </div>
                 ) : (

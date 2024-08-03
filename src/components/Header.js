@@ -27,11 +27,11 @@ function Header({ user }) {
     <header className="header-area">
       <div className="header-logo">
         <Link href="/">
-          <img
-            src="../assets/images/logo-white.png"
+          <Image
+            src="/assets/images/logo-white.png"
             alt="Auction Hive"
-            height="40"
-            width="40"
+            height={100}
+            width={250}
           />
         </Link>
       </div>
@@ -39,7 +39,7 @@ function Header({ user }) {
         <div className="mobile-logo-area d-lg-none d-flex justify-content-between align-items-center">
           <div className="mobile-logo-wrap">
             <Link href="/">
-              <img alt="image" src="../assets/images/logo.png" />
+              <Image alt="image" src="/assets/images/logo.png" height={100} width={250}/>
             </Link>
           </div>
           <div className="menu-close-btn" onClick={closeMenu}>
@@ -78,7 +78,7 @@ function Header({ user }) {
       <div className="nav-right d-flex align-items-center">
         <div className="hotline d-xxl-flex d-none">
           <div className="hotline-icon">
-            <img alt="image" src="../assets/images/icons/header-phone.svg" />
+            <Image alt="image" src="/assets/images/icons/header-phone.svg" height={50} width={50} />
           </div>
           <div className="hotline-info">
             <span>Click To Call</span>

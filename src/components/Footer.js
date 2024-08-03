@@ -16,27 +16,27 @@ function Footer() {
                 <ul className="footer-logo-list">
                   <li>
                     <Link href="#">
-                      <img alt="image" src="../assets/images/bg/footer-pay1.png" />
+                      <Image alt="image" src="/assets/images/bg/footer-pay1.png" width={40} height={36} />
                     </Link>
                   </li>
                   <li>
                     <Link href="#">
-                      <img alt="image" src="../assets/images/bg/footer-pay2.png" />
+                      <Image alt="image" src="/assets/images/bg/footer-pay2.png" width={40} height={36} />
                     </Link>
                   </li>
                   <li>
                     <Link href="#">
-                      <img alt="image" src="../assets/images/bg/footer-pay3.png" />
+                      <Image alt="image" src="/assets/images/bg/footer-pay3.png" width={40} height={36} />
                     </Link>
                   </li>
                   <li>
                     <Link href="#">
-                      <img alt="image" src="../assets/images/bg/footer-pay4.png" />
+                      <Image alt="image" src="/assets/images/bg/footer-pay4.png" width={40} height={36} />
                     </Link>
                   </li>
                   <li>
                     <Link href="#">
-                      <img alt="image" src="../assets/images/bg/footer-pay5.png" />
+                      <Image alt="image" src="/assets/images/bg/footer-pay5.png" width={40} height={36} />
                     </Link>
                   </li>
                 </ul>

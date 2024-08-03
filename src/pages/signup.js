@@ -44,23 +44,11 @@ export default function Signup() {
   // render
   return (
     <div className="signup-section pt-120 pb-120">
-      <img
-        alt="image"
-        src="assets/images/bg/section-bg.png"
-        className="section-bg-top"
-      />
-      <img
-        alt="image"
-        src="assets/images/bg/section-bg.png"
-        className="section-bg-bottom"
-      />
       <div className="container">
         <div className="row d-flex justify-content-center">
           <div className="col-xl-6 col-lg-8 col-md-10">
             <div
-              className="form-wrapper wow fadeInUp"
-              data-wow-duration="1.5s"
-              data-wow-delay=".2s"
+              className="form-wrapper"
             >
               <div className="form-title">
                 <h3>Sign Up</h3>
@@ -145,8 +133,8 @@ export default function Signup() {
 
               <div className="form-poicy-area mt-3">
                 <p>
-                  By clicking the &quot;signup&quot; button, you create a Cobiro account,
-                  and you agree to Cobiro&apos;s <Link href="#">Terms & Conditions</Link> &{" "}
+                  By clicking the &quot;signup&quot; button, you create a AuctionHive account,
+                  and you agree to AuctionHive&apos;s <Link href="#">Terms & Conditions</Link> &{" "}
                   <Link href="#">Privacy Policy.</Link>
                 </p>
               </div>

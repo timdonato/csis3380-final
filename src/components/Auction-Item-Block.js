@@ -7,7 +7,7 @@ export default function AuctionItemBlock(props) {
       <div className="eg-card auction-card1"
       >
         <div className="auction-img">
-          <img alt="image" src={props.imageUrl} />
+          <Image alt="image" src={props.imageUrl} height={500} width={500} />
           
         </div>
         <div className="auction-content">

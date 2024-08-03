@@ -43,28 +43,28 @@ export default function Contact({ user }) {
                 <p className="para text-center">
                  Email us with any questions or inquiries or call 123-456-789. We would be happy to answer your questions and set up a meeting with you.
                 </p>
-                <div class="container my-5">
-        <div class="form-wrapper">
-          <div class="form-title2">
+                <div className="container my-5">
+        <div className="form-wrapper">
+          <div className="form-title2">
                 <form onSubmit={handleSubmit}>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-inner">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="form-inner">
                                 <input type="text" name="username" placeholder="Name" />
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="form-inner">
+                        <div className="col-12">
+                            <div className="form-inner">
                                 <input type="text" name="email" placeholder="Email" />
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="form-inner">
+                        <div className="col-12">
+                            <div className="form-inner">
                                 <input type="text" name="subject" placeholder="Subject" />
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="form-inner">
+                        <div className="col-12">
+                            <div className="form-inner">
                                 <textarea name="question" cols="80" rows="10" placeholder="What&apos;s your question?" />
                             </div>
                         </div>

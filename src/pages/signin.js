@@ -45,16 +45,7 @@ export default function Login({ user }) {
   return (
     <>
       <div className="login-section pt-120 pb-120">
-        <img
-          alt="images"
-          src="assets/images/bg/section-bg.png"
-          className="img-fluid section-bg-top"
-        />
-        <img
-          alt="images"
-          src="assets/images/bg/section-bg.png"
-          className="img-fluid section-bg-bottom"
-        />
+        
         <div className="container">
           <div className="row d-flex justify-content-center g-4">
             <div className="col-xl-6 col-lg-8 col-md-10">
