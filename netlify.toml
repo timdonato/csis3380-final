@@ -1,0 +1,10 @@
+[build]
+  ignore = "true"
+  publish = "out"
+  command = "npm run build"
+
+[context.production.environment]
+  NETLIFY_CACHE_DIR = ""
+
+[context.deploy-preview.environment]
+  NETLIFY_CACHE_DIR = ""
