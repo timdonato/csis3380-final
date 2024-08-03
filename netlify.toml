@@ -1,10 +1,8 @@
 [build]
-  ignore = "true"
-  publish = "out"
   command = "npm run build"
+  publish = ".next"
 
 [context.production.environment]
-  NETLIFY_CACHE_DIR = ""
-
-[context.deploy-preview.environment]
-  NETLIFY_CACHE_DIR = ""
+  JWT_SECRET = "CSIS3380Project"
+  MONGODB_URI = "mongodb+srv://tongsik98:YFRPPjKG2KnhrHB3@cluster0.hozhwda.mongodb.net/myDatabase?retryWrites=true&w=majority
+"
