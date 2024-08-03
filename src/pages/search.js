@@ -26,7 +26,7 @@ function Search() {
     <>
         <Header user={user} />
         <div className="search-results">
-        <h1>Search Results for "{query}"</h1>
+        <h1>Search Results for <em>{query}</em></h1>
         {results.length > 0 ? (
             <ul>
             {results.map((result) => (
