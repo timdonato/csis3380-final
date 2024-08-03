@@ -50,17 +50,17 @@ export default function Contact({ user }) {
                     <div class="row">
                         <div class="col-12">
                             <div class="form-inner">
-                                <input type="text" name="username" placeholder="username" />
+                                <input type="text" name="username" placeholder="Name" />
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-inner">
-                                <input type="text" name="email" placeholder="email" />
+                                <input type="text" name="email" placeholder="Email" />
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-inner">
-                                <input type="text" name="subject" placeholder="subject" />
+                                <input type="text" name="subject" placeholder="Subject" />
                             </div>
                         </div>
                         <div class="col-12">
@@ -78,17 +78,6 @@ export default function Contact({ user }) {
         </div>
         </div>
         </div>
-        </div>
-      </div>
-      <div className="choose-us-section pb-120" id="choose-us">
-        <div className="container position-relative">
-          <div className="row d-flex justify-content-center">
-            <div className="col-sm-12 col-md-10 col-lg-8 col-xl-6">
-              <div className="section-title">
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </>
