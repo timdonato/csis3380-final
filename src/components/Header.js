@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 
 function Header({ user }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
 
   // handle sign out
@@ -21,6 +23,17 @@ function Header({ user }) {
   // handle menu close
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  // handle search open
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
+  // handle search submit
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    router.push(`/search?query=${searchQuery}`);
   };
 
   return (
@@ -65,7 +78,7 @@ function Header({ user }) {
             </li>
           ) : null}
           {user ? (
-             <li>
+            <li>
               <Link href={`/dashboard/${user.id}`} className="d-lg-none d-block">My Account</Link>
             </li>
           ) : (
@@ -78,7 +91,7 @@ function Header({ user }) {
       <div className="nav-right d-flex align-items-center">
         <div className="hotline d-xxl-flex d-none">
           <div className="hotline-icon">
-            <Image alt="image" src="/assets/images/icons/header-phone.svg" height={50} width={50} />
+            <Image alt="image" src="/assets/images/icons/header-phone.svg" height={25} width={25} />
           </div>
           <div className="hotline-info">
             <span>Click To Call</span>
@@ -86,6 +99,9 @@ function Header({ user }) {
               <Link href="tel:123-456-789">+123-456-789</Link>
             </h6>
           </div>
+        </div>
+        <div className="search-btn" onClick={toggleSearch}>
+          <i className="bi bi-search"></i>
         </div>
         {user ? (
           <div
@@ -107,6 +123,28 @@ function Header({ user }) {
         </div>
         <div className="mobile-menu-btn d-lg-none d-block" onClick={toggleMenu}>
           <i className="bx bx-menu"></i>
+        </div>
+      </div>
+      <div className={`mobile-search ${isSearchOpen ? 'slide' : ''}`}>
+        <div className="container">
+          <div className="row d-flex justify-content-center">
+            <div className="col-md-11">
+              <form onSubmit={handleSearchSubmit}>
+                <label>What are you looking for?</label>
+                <input
+                  type="text"
+                  placeholder="Search Items"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </form>
+            </div>
+            <div className="col-1 d-flex justify-content-end align-items-center">
+              <div className="search-cross-btn" onClick={toggleSearch}>
+                <i className="bi bi-x"></i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
