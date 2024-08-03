@@ -25,29 +25,42 @@ function Search({ user }) {
   return (
     <>
       <Header user={user} />
-      <div className="search-results">
-        <h1>
-          Search Results for <em>{query}</em>
-        </h1>
-        {results.length > 0 ? (
-          <ul>
-            {results.map((result) => (
-              <li key={result._id}>
-                <Link href={`/items/${result._id}`}>
-                    <Image
-                      src={result.imageUrl}
-                      alt={result.itemName}
-                      width={100}
-                      height={100}
-                    />
-                    <span>{result.itemName}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No results found</p>
-        )}
+      <div className="container my-5">
+        <div className="row">
+          <div className="col-12">
+            <h1>Search Results for <em>{query}</em></h1>
+          </div>
+          <div className="col-12">
+            
+              {results.length > 0 ? (
+                results.map((result) => (
+                    <div className="row my-3 ">
+                        <div className="col-3" key={result._id}>
+                            <Link href={`/items/${result._id}`}>
+                                <Image
+                                src={result.imageUrl}
+                                alt={result.itemName}
+                                width={250}
+                                height={250}
+                                />
+                            </Link>
+                        </div>
+                        <div className="col-9" key={result._id}>
+                            <Link href={`/items/${result._id}`}><h2>{result.itemName}</h2></Link>
+                        </div>
+                    
+                    </div>
+                ))
+              ) : (
+                <div className="col">
+                  <h2>No results found</h2>
+                  <div className="eg-btn btn--primary header-btn">
+                    <Link href="/">My Account</Link>
+                  </div>
+                </div>
+              )}
+          </div>
+        </div>
       </div>
     </>
   );
